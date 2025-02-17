@@ -2,8 +2,14 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:res="clr-namespace:LelkiBekeAdmin.Resources">
 
+    <FontImage x:Key="walletIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.BookOpen}"/>
+    <FontImage x:Key="historyIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.History}"/>
+    <FontImage x:Key="stockIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.Desktop}"/>
+    <FontImage x:Key="userIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.Qrcode}"/>
+    <FontImage x:Key="tableIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.User}"/>
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
