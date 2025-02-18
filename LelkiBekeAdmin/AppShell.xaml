@@ -38,5 +38,8 @@
         <Tab Title="Register" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.RegisterPage}" />
         </Tab>
+        <Tab Title="QR" Icon="{x:StaticResource userIcon}">
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.QRcodePage}" />
+        </Tab>
     </TabBar>
 </Shell>

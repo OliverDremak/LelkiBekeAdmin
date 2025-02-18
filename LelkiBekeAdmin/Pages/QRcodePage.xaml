@@ -1,13 +1,26 @@
-
-    <?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.QRcodePage"
              Title="QRcodePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="0.4*,2.7*,0.4*,0.4*,*" ColumnDefinitions="*,0.5*">
+        <Button Text="Back" HeightRequest="50" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Margin="10" />
+        <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" StrokeThickness="3">
+            <GraphicsView x:Name="qrCanvas"
+                      Drawable="{Binding QRDrawable}"
+                      HeightRequest="200"
+                      WidthRequest="200"/>
+        </Border>
+        <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="Link:" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="{Binding QRcodeLink}" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="QRCodeText" Placeholder="Id" VerticalOptions="Center" />
+        </StackLayout>
+        <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center">
+            <CheckBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="IsLabel" HorizontalOptions="Center" />
+            <Label Text="Add label" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center"  VerticalOptions="Center"/> 
+        </StackLayout>
+
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Download QR Code" Clicked="OnDownloadQRCodeClicked"/>
+    </Grid>
 </ContentPage>

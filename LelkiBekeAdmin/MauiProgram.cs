@@ -2,6 +2,7 @@
 using LelkiBekeAdmin.Pages;
 using LelkiBekeAdmin.ViewModels;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Handlers;
 
 namespace LelkiBekeAdmin
 {
@@ -29,6 +30,11 @@ namespace LelkiBekeAdmin
             builder.Services.AddSingleton<TableViewModel>();
             builder.Services.AddSingleton<MenuPage>();
             builder.Services.AddSingleton<MenuViewModel>();
+            builder.Services.AddSingleton<QRcodePage>();
+            builder.Services.AddSingleton<QRcodeViewModel>();
+
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
