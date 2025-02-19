@@ -23,7 +23,7 @@ public partial class QRcodePage : ContentPage
         qrDrawable = new QRCodeDrawable($"{qrViewModel.QRcodeLink}{QRCodeText.Text}");
         qrCanvas.Drawable = qrDrawable;
     }
-    private Uri GenerateQRCodeUri(string text)
+    public Uri GenerateQRCodeUri(string text)
     {
         string apiUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={Uri.EscapeDataString(text)}";
         return new Uri(apiUrl);
@@ -48,10 +48,10 @@ public partial class QRcodePage : ContentPage
             await Share.Default.RequestAsync(new ShareFileRequest
             {
                 Title = "Download QR Code",
-                File = new ShareFile(filePath)
+                //File = new ShareFile()
             });
 
-            await DisplayAlert("Success", $"QR Code saved successfully!{filePath}", "OK");
+            await DisplayAlert("Success", $"QR Code saved to gallery successfully!", "OK");
         }
         catch (Exception ex)
         {
