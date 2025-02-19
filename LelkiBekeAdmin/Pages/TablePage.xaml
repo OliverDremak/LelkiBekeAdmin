@@ -3,10 +3,87 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.TablePage"
              Title="TablePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout>
+        <ScrollView Orientation="Horizontal">
+            <HorizontalStackLayout Margin="10">
+                <Label Text="ok"/>
+            </HorizontalStackLayout>
+        </ScrollView>
+        <!--Datatemplate : SwipeView to delete item or update + update page-->
+        <ScrollView VerticalOptions="FillAndExpand">
+            <CollectionView Margin="0" ItemsSource="{Binding TableItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Reveal">
+                                    <!-- Remove action -->
+                                    <SwipeItemView>
+                                        <Frame CornerRadius="10"
+                                               Padding="10"
+                                               BackgroundColor="Red"
+                                               HasShadow="True"
+                                               WidthRequest="80">
+                                            <StackLayout Orientation="Horizontal" 
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center">
+                                                <Image Source="{x:StaticResource RemoveIcon}" 
+                                                       HeightRequest="24" 
+                                                       WidthRequest="24" />
+                                                
+                                            </StackLayout>
+                                        </Frame>
+                                    </SwipeItemView>
+
+                                    <!-- Edit action -->
+                                    <SwipeItemView>
+                                        <Frame CornerRadius="10"
+                                               Padding="10"
+                                               BackgroundColor="{x:StaticResource Header}"
+                                               HasShadow="True"
+                                               WidthRequest="80">
+                                            <StackLayout Orientation="Horizontal" 
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center">
+                                                <Image Source="{x:StaticResource ModifyIcon}" 
+                                                       HeightRequest="24" 
+                                                       WidthRequest="24" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame Padding="10"
+       Margin="10"
+       CornerRadius="8"
+       HasShadow="True">
+                                <StackLayout>
+                                    <!-- Display the table name -->
+                                    <Label Text="{Binding name}"
+               FontSize="20"
+               FontAttributes="Bold"
+               Margin="0,0,0,5" />
+
+                                    <!-- Display the QR Code image -->
+                                    <Label Text="{Binding qr_code_url}"
+               Margin="0,0,0,5" />
+
+                                    <!-- Display the table ID -->
+                                    <Label Text="{Binding id, StringFormat='ID: {0}'}"
+               FontSize="14"
+               TextColor="Gray" />
+
+                                    <!-- Display the availability status -->
+                                    <Label Text="{Binding is_avalable, StringFormat='Available: {0}'}"
+               FontSize="14"
+               TextColor="Gray" />
+                                </StackLayout>
+                            </Frame>
+
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

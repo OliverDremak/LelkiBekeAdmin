@@ -10,6 +10,8 @@
     <FontImage x:Key="stockIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.Desktop}"/>
     <FontImage x:Key="userIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.Qrcode}"/>
     <FontImage x:Key="tableIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.User}"/>
+    <FontImage x:Key="RemoveIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.Trash}"/>
+    <FontImage x:Key="ModifyIcon" Size="22" FontFamily="FontAwesome" Glyph="{x:Static res:IconFonts.PenAlt}"/>
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>

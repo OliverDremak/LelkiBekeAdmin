@@ -15,11 +15,12 @@ public partial class QRcodePage : ContentPage
     private QRCodeDrawable qrDrawable;
 
     private string Url;
-    public QRcodePage(QRcodeViewModel vm)
+    public QRcodePage()
     {
         InitializeComponent();
-        this.BindingContext = vm;
-        qrDrawable = new QRCodeDrawable($"{vm.QRcodeLink}{QRCodeText.Text}");
+        var qrViewModel = new QRcodeViewModel();
+        this.BindingContext = qrViewModel;
+        qrDrawable = new QRCodeDrawable($"{qrViewModel.QRcodeLink}{QRCodeText.Text}");
         qrCanvas.Drawable = qrDrawable;
     }
     private Uri GenerateQRCodeUri(string text)
@@ -41,7 +42,7 @@ public partial class QRcodePage : ContentPage
             string fileName = $"QRCode_{DateTime.Now:yyyyMMdd_HHmmss}.png";
             string filePath = Path.Combine(FileSystem.AppDataDirectory, fileName);
 
-            await File.WriteAllBytesAsync(filePath, imageBytes);
+            //await File.WriteAllBytesAsync(filePath, imageBytes);
 
             // Share the saved image
             await Share.Default.RequestAsync(new ShareFileRequest

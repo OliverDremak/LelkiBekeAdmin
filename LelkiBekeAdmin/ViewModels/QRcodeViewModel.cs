@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LelkiBekeAdmin.ViewModels
 {
-    public class QRcodeViewModel
+    public partial class QRcodeViewModel
     {
         public string QRcodeLink { get; set; } = "https://lelkibeke.hu/";
 

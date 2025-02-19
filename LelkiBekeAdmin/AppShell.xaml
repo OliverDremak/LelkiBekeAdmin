@@ -15,31 +15,32 @@
     Shell.TabBarForegroundColor="White"
     Shell.TabBarTitleColor="White"
     Shell.TabBarUnselectedColor="LightGray">
-
+    <ShellContent ContentTemplate="{DataTemplate local:Pages.MainPage}" Route="MainPage" />
+    <ShellContent ContentTemplate="{DataTemplate local:Pages.RegisterPage}" Route="RegisterPage" />
     <TabBar>
-        <Tab Title="Main" Icon="{x:StaticResource userIcon}">
+        <!--<Tab Title="Main" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.MainPage}" />
-        </Tab>
+        </Tab>-->
         <Tab Title="Menu" Icon="{x:StaticResource walletIcon}">
-            <ShellContent ContentTemplate="{DataTemplate local:Pages.MenuPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.MenuPage}" Route="MenuPage" />
         </Tab>
 
         <Tab Title="Stats" Icon="{x:StaticResource stockIcon}">
-            <ShellContent ContentTemplate="{DataTemplate local:Pages.StatPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.StatPage}" Route="StatPage" />
         </Tab>
 
         <Tab Title="Table" Icon="{x:StaticResource tableIcon}">
-            <ShellContent ContentTemplate="{DataTemplate local:Pages.TablePage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.TablePage}" Route="TablePage" />
         </Tab>
 
         <Tab Title="User Add" Icon="{x:StaticResource userIcon}">
-            <ShellContent ContentTemplate="{DataTemplate local:Pages.UserAddPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.UserAddPage}" Route="UserAddPage"/>
         </Tab>
-        <Tab Title="Register" Icon="{x:StaticResource userIcon}">
+        <!--<Tab Title="Register" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.RegisterPage}" />
-        </Tab>
+        </Tab>-->
         <Tab Title="QR" Icon="{x:StaticResource userIcon}">
-            <ShellContent ContentTemplate="{DataTemplate local:Pages.QRcodePage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.QRcodePage}" Route="QRcodePage" />
         </Tab>
     </TabBar>
 </Shell>

@@ -2,22 +2,92 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.MenuPage"
-             Title="MenuPage">
+             Title="MenuPage"
+             >
     <StackLayout>
         <ScrollView Orientation="Horizontal">
             <HorizontalStackLayout Margin="10">
+                <Label Text="ok"/>
             </HorizontalStackLayout>
         </ScrollView>
         <!--Datatemplate : SwipeView to delete item or update + update page-->
         <ScrollView VerticalOptions="FillAndExpand">
-            <CollectionView Margin="0">
+            <CollectionView Margin="0" ItemsSource="{Binding MenuItems}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems Mode="Reveal">
+                                    <!-- Remove action -->
+                                    <SwipeItemView>
+                                        <Frame CornerRadius="10"
+                                               Padding="10"
+                                               BackgroundColor="Red"
+                                               HasShadow="True"
+                                               WidthRequest="80">
+                                            <StackLayout Orientation="Horizontal" 
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center">
+                                                <Image Source="{x:StaticResource RemoveIcon}" 
+                                                       HeightRequest="24" 
+                                                       WidthRequest="24" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </SwipeItemView>
+                                    <SwipeItemView>
+                                        <Frame CornerRadius="10"
+                                               Padding="10"
+                                               BackgroundColor="{x:StaticResource Header}"
+                                               HasShadow="True"
+                                               WidthRequest="80">
+                                            <StackLayout Orientation="Horizontal" 
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center">
+                                                <Image Source="{x:StaticResource ModifyIcon}" 
+                                                       HeightRequest="24" 
+                                                       WidthRequest="24" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame Padding="10"
+                                   Margin="10"
+                                   CornerRadius="8"
+                                   HasShadow="True">
+                                    <StackLayout>
+                                        <!-- Kép megjelenítése -->
+                                    <Image Source="{Binding Image_url}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="150" />
+
+                                    <!-- Név -->
+                                                        <Label Text="{Binding Name}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   Margin="0,10,0,0" />
+
+                                                        <!-- Kategória -->
+                                                        <Label Text="{Binding Category_name}"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+
+                                                        <!-- Leírás -->
+                                                        <Label Text="{Binding Description}"
+                                   FontSize="14"
+                                   LineBreakMode="TailTruncation" />
+
+                             <!-- Ár -->
+                            <Label Text="{Binding Price}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="Green" />
+                                </StackLayout>
+                            </Frame>
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </ScrollView>
     </StackLayout>
 </ContentPage>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LelkiBekeAdmin.ViewModels
 {
-    internal class UserAddViewModel
+    public partial class UserAddViewModel
     {
     }
 }
