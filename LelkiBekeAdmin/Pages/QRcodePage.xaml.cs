@@ -22,7 +22,7 @@ public partial class QRcodePage : ContentPage
         qrDrawable = new QRCodeDrawable($"{vm.QRcodeLink}{QRCodeText.Text}");
         qrCanvas.Drawable = qrDrawable;
     }
-    private Uri GenerateQRCodeUri(string text)
+    public Uri GenerateQRCodeUri(string text)
     {
         string apiUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={Uri.EscapeDataString(text)}";
         return new Uri(apiUrl);
@@ -37,20 +37,15 @@ public partial class QRcodePage : ContentPage
             var client = new HttpClient();
             var imageBytes = await client.GetByteArrayAsync(uri);
 
-            // Save it to a file
-            string fileName = $"QRCode_{DateTime.Now:yyyyMMdd_HHmmss}.png";
-            string filePath = Path.Combine(FileSystem.AppDataDirectory, fileName);
-
-            await File.WriteAllBytesAsync(filePath, imageBytes);
-
-            // Share the saved image
+            //BBtol megkerdezni hogy hogy lehet
+           
             await Share.Default.RequestAsync(new ShareFileRequest
             {
                 Title = "Download QR Code",
-                File = new ShareFile(filePath)
+                //File = new ShareFile()
             });
 
-            await DisplayAlert("Success", $"QR Code saved successfully!{filePath}", "OK");
+            await DisplayAlert("Success", $"QR Code saved to gallery successfully!", "OK");
         }
         catch (Exception ex)
         {
