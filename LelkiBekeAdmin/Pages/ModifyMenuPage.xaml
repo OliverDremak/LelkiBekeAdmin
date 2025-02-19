@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LelkiBekeAdmin.Pages.ModifyMenuPage"
+             Title="ModifyMenuPage">
+    <VerticalStackLayout>
+        <Button Text="Back" Command="{Binding NavigateToMenuCommand}" WidthRequest="80" HorizontalOptions="Start" Margin="10" CornerRadius="25"/>
+
+
+        <Image Source="dotnet_bot.png" HeightRequest="100" HorizontalOptions="Center" />
+
+        <Label Text="Modify Item" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               TextColor="{StaticResource Header}"
+               VerticalOptions="Start"/>
+
+        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
+            <Entry Placeholder="Category Name" Text="{Binding Category_name}" TextColor="Black" HeightRequest="40"/>
+        </Frame>
+
+        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
+            <Entry Placeholder="Name" Text="{Binding Name}" TextColor="Black" HeightRequest="40"/>
+        </Frame>
+
+        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="100" Margin="10">
+            <Editor Placeholder="Description" Text="{Binding Description}" TextColor="Black" HeightRequest="80" />
+        </Frame>
+
+        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
+            <Entry Placeholder="Price" Text="{Binding Price}" TextColor="Black" Keyboard="Numeric" HeightRequest="40"/>
+        </Frame>
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
+            <Button Text="SAVE" 
+        BackgroundColor="{StaticResource ButtonDef}" 
+        TextColor="White" 
+        CornerRadius="25" 
+        HeightRequest="50"
+        Margin="10"
+                    WidthRequest="150"
+        />
+
+            <Button Text="CANCEL" 
+        BackgroundColor="{StaticResource Header}" 
+        TextColor="White" 
+        CornerRadius="25" 
+        HeightRequest="50"
+        Margin="10"
+                    WidthRequest="150"
+        />
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

@@ -7,6 +7,6 @@ public partial class MenuPage : ContentPage
 	public MenuPage()
 	{
 		InitializeComponent();
-		this.BindingContext = new MenuViewModel();
+		BindingContext = new MenuViewModel();
     }
 }

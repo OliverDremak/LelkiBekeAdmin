@@ -19,36 +19,12 @@
                             <SwipeView.LeftItems>
                                 <SwipeItems Mode="Reveal">
                                     <!-- Remove action -->
-                                    <SwipeItemView>
-                                        <Frame CornerRadius="10"
-                                               Padding="10"
-                                               BackgroundColor="Red"
-                                               HasShadow="True"
-                                               WidthRequest="80">
-                                            <StackLayout Orientation="Horizontal" 
-                                                         HorizontalOptions="Center"
-                                                         VerticalOptions="Center">
-                                                <Image Source="{x:StaticResource RemoveIcon}" 
-                                                       HeightRequest="24" 
-                                                       WidthRequest="24" />
-                                            </StackLayout>
-                                        </Frame>
-                                    </SwipeItemView>
-                                    <SwipeItemView>
-                                        <Frame CornerRadius="10"
-                                               Padding="10"
-                                               BackgroundColor="{x:StaticResource Header}"
-                                               HasShadow="True"
-                                               WidthRequest="80">
-                                            <StackLayout Orientation="Horizontal" 
-                                                         HorizontalOptions="Center"
-                                                         VerticalOptions="Center">
-                                                <Image Source="{x:StaticResource ModifyIcon}" 
-                                                       HeightRequest="24" 
-                                                       WidthRequest="24" />
-                                            </StackLayout>
-                                        </Frame>
-                                    </SwipeItemView>
+                                    <SwipeItem IconImageSource="{x:StaticResource RemoveIcon}"
+                                               BackgroundColor="Red"                                               
+                                               Command="{Binding BindingContext.RemoveItemCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>                
+                                    <SwipeItem IconImageSource="{x:StaticResource ModifyIcon}"
+                                               BackgroundColor="{StaticResource ButtonDef}"                                               
+                                               Command="{Binding BindingContext.NavigateToModifyCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <Frame Padding="10"

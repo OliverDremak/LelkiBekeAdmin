@@ -4,18 +4,33 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using LelkiBekeAdmin.Classes;
+using LelkiBekeAdmin.Pages;
 
 namespace LelkiBekeAdmin.ViewModels
 {
     public partial class MenuViewModel : ObservableObject
     {
         public ObservableCollection<FoodItem> MenuItems { get; private set; } = new ObservableCollection<FoodItem>();
+        public FoodItem SelectedItem { get; set; }
+        public ICommand NavigateToModifyCommand { get; }
+        public ICommand RemoveItemCommand { get; }
 
         public MenuViewModel()
         {
             LoadMenuItems();
+            NavigateToModifyCommand = new RelayCommand(async () =>
+            {
+                await Shell.Current.GoToAsync($"//{nameof(ModifyMenuPage)}");
+            });
+            RemoveItemCommand = new RelayCommand<FoodItem>(async item => await RemoveItem(item));
+        }
+        private async Task RemoveItem(FoodItem item)
+        {
+            MenuItems.Remove(item);
         }
 
         private void LoadMenuItems()
