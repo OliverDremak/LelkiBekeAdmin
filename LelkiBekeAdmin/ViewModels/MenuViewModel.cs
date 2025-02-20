@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LelkiBekeAdmin.Classes;
 using LelkiBekeAdmin.Pages;
+using System.Text.Json;
 
 namespace LelkiBekeAdmin.ViewModels
 {
@@ -26,7 +27,7 @@ namespace LelkiBekeAdmin.ViewModels
         public MenuViewModel()
         {
             LoadMenuItems();
-            NavigateToModifyCommand = new RelayCommand(async () =>
+            AddItemCommand = new RelayCommand(async () =>
             {
                 await Shell.Current.GoToAsync($"//{nameof(ModifyMenuPage)}");
             });
@@ -35,9 +36,10 @@ namespace LelkiBekeAdmin.ViewModels
             {
                 CategorySelectedBtn(item);
             });
-            AddItemCommand = new RelayCommand(() =>
+            NavigateToModifyCommand = new RelayCommand<FoodItem>(async item =>
             {
-                
+                var json = JsonSerializer.Serialize(item);
+                await Shell.Current.GoToAsync($"//{nameof(ModifyMenuPage)}?menuItem={Uri.EscapeDataString(json)}");
             });
 
         }
@@ -48,12 +50,26 @@ namespace LelkiBekeAdmin.ViewModels
 
         private void CategorySelectedBtn(Category category)
         {
-            var items = MenuItems.Where(x => x.Category_name == category.Name);
-            FilteredMenuItems.Clear();
-            foreach (var item in items)
+            IEnumerable<FoodItem> items;
+            if (category.Name != "All")
             {
-                FilteredMenuItems.Add(item);
+                items = MenuItems.Where(x => x.Category_name == category.Name);
+                FilteredMenuItems.Clear();
+                foreach (var item in items)
+                {
+                    FilteredMenuItems.Add(item);
+                }
             }
+            else
+            {
+                FilteredMenuItems.Clear();
+                foreach (var item in MenuItems)
+                {
+                    FilteredMenuItems.Add(item);
+                }
+            }
+
+
         }
 
         private void LoadMenuItems()
@@ -71,6 +87,7 @@ namespace LelkiBekeAdmin.ViewModels
                 FilteredMenuItems.Add(item);
             }
             var categories = Examples.Select(x => x.Category_name).Distinct();
+            Categories.Add(new Category { Name = "All" });
             foreach (var category in categories)
             {
                 Categories.Add(new Category { Name = category });

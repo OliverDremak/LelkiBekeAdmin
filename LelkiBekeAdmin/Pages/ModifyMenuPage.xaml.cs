@@ -7,6 +7,6 @@ public partial class ModifyMenuPage : ContentPage
 	public ModifyMenuPage()
 	{
 		InitializeComponent();
-		this.BindingContext = new ModifyMenuViewModel();
+		BindingContext = new ModifyMenuViewModel();
     }
 }

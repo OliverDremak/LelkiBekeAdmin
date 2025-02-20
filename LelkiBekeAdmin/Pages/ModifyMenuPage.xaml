@@ -10,7 +10,7 @@
 
         <Image Source="dotnet_bot.png" HeightRequest="200" HorizontalOptions="Center" />
 
-        <Label Text="Modify Item" 
+        <Label Text="{Binding Title, Mode=TwoWay}" 
                FontSize="24" 
                FontAttributes="Bold" 
                HorizontalOptions="Center" 
@@ -18,19 +18,19 @@
                VerticalOptions="Start"/>
 
         <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
-            <Entry Placeholder="Category Name" Text="{Binding Category_name}" TextColor="Black" HeightRequest="40"/>
+            <Entry Placeholder="Category Name" Text="{Binding SelectedItem.Category_name, Mode=TwoWay}" TextColor="Black" HeightRequest="40"/>
         </Frame>
 
         <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
-            <Entry Placeholder="Name" Text="{Binding Name}" TextColor="Black" HeightRequest="40"/>
+            <Entry Placeholder="Name" Text="{Binding SelectedItem.Name, Mode=TwoWay }" TextColor="Black" HeightRequest="40"/>
         </Frame>
 
         <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="100" Margin="10">
-            <Editor Placeholder="Description" Text="{Binding Description}" TextColor="Black" HeightRequest="80" />
+            <Editor Placeholder="Description" Text="{Binding SelectedItem.Description, Mode=TwoWay}" TextColor="Black" HeightRequest="80" />
         </Frame>
 
         <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
-            <Entry Placeholder="Price" Text="{Binding Price}" TextColor="Black" Keyboard="Numeric" HeightRequest="40"/>
+            <Entry Placeholder="Price" Text="{Binding SelectedItem.Price, Mode=TwoWay}" TextColor="Black" Keyboard="Numeric" HeightRequest="40"/>
         </Frame>
         <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
             <Button Text="SAVE" 

@@ -7,11 +7,25 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
 using LelkiBekeAdmin.Pages;
+using System.Text.Json;
+using LelkiBekeAdmin.Classes;
 
 namespace LelkiBekeAdmin.ViewModels
 {
-    public partial class ModifyMenuViewModel : ObservableObject
+    public partial class ModifyMenuViewModel : ObservableObject, IQueryAttributable
     {
+        private FoodItem NotUpdated { get; set; }
+        private FoodItem _selectedItem;
+        public FoodItem SelectedItem
+        {
+            get => _selectedItem;
+            set => SetProperty(ref _selectedItem, value);
+        }
+        private string _title;
+        public string Title { 
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
         public ICommand NavigateToMenuCommand { get; }
 
         public ModifyMenuViewModel()
@@ -20,6 +34,26 @@ namespace LelkiBekeAdmin.ViewModels
             {
                 await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
             });
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.ContainsKey("menuItem"))
+            {
+                var encodedJson = query["menuItem"]?.ToString();
+                if (!string.IsNullOrEmpty(encodedJson))
+                {
+                    var json = Uri.UnescapeDataString(encodedJson);
+                    SelectedItem = JsonSerializer.Deserialize<FoodItem>(json);
+                    Title = "Edit Menu Item";
+                    NotUpdated = JsonSerializer.Deserialize<FoodItem>(json);
+                }
+            }
+            else
+            {
+                SelectedItem = new FoodItem();
+                Title = "Add Menu Item";
+            }
         }
     }
 }

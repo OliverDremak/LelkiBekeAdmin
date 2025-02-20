@@ -9,7 +9,7 @@
             <CollectionView ItemsSource="{Binding Categories}" ItemsLayout="HorizontalList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding Name}" BorderColor="{StaticResource ButtonDef}" BorderWidth="2" BackgroundColor="{StaticResource ButtonHover}" WidthRequest="100" Margin="10,10,10,0" Command="{Binding CategorySelectedBtnCommand}"/>
+                        <Button Text="{Binding Name}" BorderColor="{StaticResource ButtonDef}" BorderWidth="2" BackgroundColor="{StaticResource ButtonHover}" WidthRequest="100" Margin="10,10,10,0" Command="{Binding BindingContext.CategorySelectedBtnCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -69,7 +69,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             </ScrollView>
-            <AbsoluteLayout BackgroundColor="Transparent" HeightRequest="0">
+            <AbsoluteLayout BackgroundColor="Transparent" >
                 <Button Text="+" 
                         FontSize="30"
                         WidthRequest="60" 
@@ -83,7 +83,8 @@
                         Margin="10"
                         VerticalOptions="End"
                         HorizontalOptions="Start"
-                        Command="{Binding AddItemCommand}" />
+                        ZIndex="10"
+                        Command="{Binding BindingContext.AddItemCommand, Source={RelativeSource AncestorType={x:Type AbsoluteLayout}}}" CommandParameter="{Binding .}" />
         </AbsoluteLayout>
     </StackLayout>
    

@@ -12,5 +12,7 @@ namespace LelkiBekeAdmin.Classes
         public string name { get; set; }
         public string qr_code_url { get; set; }
         public int is_avalable { get; set; }
+        public bool is_available => is_avalable == 1;
+        public string color => is_avalable == 1 ? "Green" : "Red";
     }
 }
