@@ -17,6 +17,7 @@ namespace LelkiBekeAdmin.ViewModels
         public ICommand RemoveItemCommand { get; }
         public ICommand ModifyItemCommand { get; }
         public ICommand AddItemCommand { get; }
+        public ICommand SaveCommand { get; }
 
         public TableViewModel()
         {
@@ -24,6 +25,11 @@ namespace LelkiBekeAdmin.ViewModels
             RemoveItemCommand = new RelayCommand<TableItem>(async item => RemoveItem(item));
             ModifyItemCommand = new RelayCommand<TableItem>(async item => ModifyItem(item));
             AddItemCommand = new RelayCommand<TableItem>(async item => AddItem(item));
+            SaveCommand = new RelayCommand(async () =>  Save());
+        }
+        private void Save()
+        {
+            // Save to database
         }
         private void AddItem(TableItem item)
         {

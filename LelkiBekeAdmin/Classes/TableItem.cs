@@ -13,6 +13,6 @@ namespace LelkiBekeAdmin.Classes
         public string qr_code_url { get; set; }
         public int is_avalable { get; set; }
         public bool is_available => is_avalable == 1;
-        public string color => is_avalable == 1 ? "Green" : "Red";
+        public string color => is_avalable == 1 ? "#7CB342" : "LightRed";
     }
 }

@@ -24,6 +24,8 @@ namespace LelkiBekeAdmin.ViewModels
         public ICommand CategorySelectedBtnCommand { get; }
         public ICommand AddItemCommand { get; }
 
+
+
         public MenuViewModel()
         {
             LoadMenuItems();

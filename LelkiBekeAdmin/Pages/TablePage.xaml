@@ -63,25 +63,31 @@
                                    HasShadow="True"
                                    BackgroundColor="{Binding color}">
                                 <StackLayout>
-                                    <!-- Display the table name -->
-                                    <Label Text="{Binding name}"
+                                    <!-- Editable Table Name -->
+                                    <Entry Text="{Binding name, Mode=TwoWay}"
                                            FontSize="20"
                                            FontAttributes="Bold"
                                            Margin="0,0,0,5" />
 
-                                    <!-- Display the QR Code image -->
-                                    <Label Text="{Binding qr_code_url}"
+                                    <!-- Editable QR Code URL -->
+                                    <Entry Text="{Binding qr_code_url, Mode=TwoWay}"
                                             Margin="0,0,0,5" />
 
-                                    <!-- Display the table ID -->
-                                    <Label Text="{Binding id, StringFormat='ID: {0}'}"
+                                    <!-- Table ID (read-only in this example) -->
+                                    <Entry Text="{Binding id, StringFormat='ID: {0}', Mode=TwoWay}"
                                            FontSize="14"
-                                           TextColor="Gray" />
+                                           TextColor="Gray"
+                                           IsReadOnly="True" />
 
-                                    <!-- Display the availability status -->
-                                    <Label Text="{Binding is_available, StringFormat='Available: {0}'}"
-                                           FontSize="14"
-                                           TextColor="Gray" />
+                                    <!-- Editable Availability using a Switch -->
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text="Available:" FontSize="14" TextColor="Gray" VerticalOptions="Center"/>
+                                        <Switch IsToggled="{Binding is_available, Mode=TwoWay}" />
+                                    </StackLayout>
+                                    <Button Text="Save"
+                                            Command="{Binding BindingContext.SaveCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"
+                                            HorizontalOptions="End"
+                                            Margin="0,10,0,0" />
                                 </StackLayout>
                             </Frame>
 
@@ -104,7 +110,7 @@
                 Margin="10"
                 VerticalOptions="End"
                 HorizontalOptions="Start"
-                Command="{Binding AddItemCommand}" />
+                Command="{Binding BindingContext.NavigateToModifyCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
         </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

@@ -9,7 +9,7 @@
             <CollectionView ItemsSource="{Binding Categories}" ItemsLayout="HorizontalList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding Name}" BorderColor="{StaticResource ButtonDef}" BorderWidth="2" BackgroundColor="{StaticResource ButtonHover}" WidthRequest="100" Margin="10,10,10,0" Command="{Binding BindingContext.CategorySelectedBtnCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
+                        <Button Text="{Binding Name}" BorderColor="{StaticResource ButtonDef}" BorderWidth="2" BackgroundColor="{StaticResource ButtonHover}" WidthRequest="100" Margin="10,10,10,0" Command="{Binding BindingContext.ModifyItemCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
