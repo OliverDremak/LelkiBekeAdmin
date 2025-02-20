@@ -4,7 +4,7 @@
              x:Class="LelkiBekeAdmin.Pages.QRcodePage"
              Title="QRcodePage">
     <Grid RowDefinitions="0.4*,2.7*,0.4*,0.4*,*" ColumnDefinitions="*,0.5*">
-        <Button Text="Back" HeightRequest="50" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Margin="10" />
+        <!--<Button Text="Back" HeightRequest="50" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Margin="10" />-->
         <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" StrokeThickness="3">
             <GraphicsView x:Name="qrCanvas"
                       Drawable="{Binding QRDrawable}"
@@ -21,6 +21,6 @@
             <Label Text="Add label" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center"  VerticalOptions="Center"/> 
         </StackLayout>
 
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Download QR Code" Clicked="OnDownloadQRCodeClicked"/>
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Download QR Code" Clicked="OnDownloadQRCodeClicked" Margin="20"/>
     </Grid>
 </ContentPage>

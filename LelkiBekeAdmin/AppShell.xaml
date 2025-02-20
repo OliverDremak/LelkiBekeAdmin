@@ -34,7 +34,7 @@
             <ShellContent ContentTemplate="{DataTemplate local:Pages.TablePage}" Route="TablePage" />
         </Tab>
 
-        <Tab Title="User Add" Icon="{x:StaticResource userIcon}">
+        <Tab Title="Waiter Add" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.UserAddPage}" Route="UserAddPage"/>
         </Tab>
         <!--<Tab Title="Register" Icon="{x:StaticResource userIcon}">
