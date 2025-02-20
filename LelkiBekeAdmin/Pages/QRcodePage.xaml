@@ -6,10 +6,9 @@
     <Grid RowDefinitions="0.4*,2.7*,0.4*,0.4*,*" ColumnDefinitions="*,0.5*">
         <!--<Button Text="Back" HeightRequest="50" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Margin="10" />-->
         <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" StrokeThickness="3">
-            <GraphicsView x:Name="qrCanvas"
-                      Drawable="{Binding QRDrawable}"
-                      HeightRequest="500"
-                      WidthRequest="500"/>
+            <Image Source="example_qrcode.png"
+                      HeightRequest="400"
+                      WidthRequest="400"/>
         </Border>
         <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
             <Label Text="Link:" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" />

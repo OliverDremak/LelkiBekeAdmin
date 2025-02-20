@@ -20,8 +20,8 @@ public partial class QRcodePage : ContentPage
         InitializeComponent();
         var qrViewModel = new QRcodeViewModel();
         this.BindingContext = qrViewModel;
-        qrDrawable = new QRCodeDrawable($"{qrViewModel.QRcodeLink}{QRCodeText.Text}");
-        qrCanvas.Drawable = qrDrawable;
+        //qrDrawable = new QRCodeDrawable($"{qrViewModel.QRcodeLink}{QRCodeText.Text}");
+        //qrCanvas.Drawable = qrDrawable;
     }
     public Uri GenerateQRCodeUri(string text)
     {
@@ -31,31 +31,34 @@ public partial class QRcodePage : ContentPage
 
     private async void OnDownloadQRCodeClicked(object sender, EventArgs e)
     {
-        try
+        if (true) // This should be a command in the view model!!
         {
-            // Get the QR code image from the URL
-            var uri = GenerateQRCodeUri($"{this.Url}{QRCodeText.Text}");
-            var client = new HttpClient();
-            var imageBytes = await client.GetByteArrayAsync(uri);
-
-            // Save it to a file
-            string fileName = $"QRCode_{DateTime.Now:yyyyMMdd_HHmmss}.png";
-            string filePath = Path.Combine(FileSystem.AppDataDirectory, fileName);
-
-            //await File.WriteAllBytesAsync(filePath, imageBytes);
-
-            // Share the saved image
-            await Share.Default.RequestAsync(new ShareFileRequest
+            try
             {
-                Title = "Download QR Code",
-                //File = new ShareFile()
-            });
+                // Get the QR code image from the URL
+                var uri = GenerateQRCodeUri($"{this.Url}{QRCodeText.Text}");
+                var client = new HttpClient();
+                var imageBytes = await client.GetByteArrayAsync(uri);
 
-            await DisplayAlert("Success", $"QR Code saved to gallery successfully!", "OK");
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"Failed to download QR Code: {ex.Message}", "OK");
+                // Save it to a file
+                string fileName = $"QRCode_{DateTime.Now:yyyyMMdd_HHmmss}.png";
+                string filePath = Path.Combine(FileSystem.AppDataDirectory, fileName);
+
+                //await File.WriteAllBytesAsync(filePath, imageBytes);
+
+                // Share the saved image
+                await Share.Default.RequestAsync(new ShareFileRequest
+                {
+                    Title = "Download QR Code",
+                    //File = new ShareFile()
+                });
+
+                await DisplayAlert("Success", $"QR Code saved to gallery successfully!", "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to download QR Code: {ex.Message}", "OK");
+            }
         }
     }
 }
