@@ -33,13 +33,5 @@
             CornerRadius="25" 
             HeightRequest="50"
             Command="{Binding NavigateToMenuCommand}"/>
-
-        <Label Text="Already have an account? "
-           FontSize="14" 
-           HorizontalOptions="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding NavigateToLoginCommand}"/>
-            </Label.GestureRecognizers>
-        </Label>
     </StackLayout>
 </ContentPage>

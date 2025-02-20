@@ -17,7 +17,7 @@ namespace LelkiBekeAdmin.ViewModels
     {
         public ObservableCollection<FoodItem> MenuItems { get; private set; } = new ObservableCollection<FoodItem>();
         public ObservableCollection<Category> Categories { get; private set; } = new ObservableCollection<Category>();
-        public ObservableCollection<FoodItem> FilteredMenuItems { get; private set; } = new ObservableCollection<FoodItem>();
+        public ObservableCollection<FoodItem> FilteredMenuItems { get;  set; } = new ObservableCollection<FoodItem>();
         public FoodItem SelectedItem { get; set; }
         public ICommand NavigateToModifyCommand { get; }
         public ICommand RemoveItemCommand { get; }
@@ -48,6 +48,7 @@ namespace LelkiBekeAdmin.ViewModels
         private async Task RemoveItem(FoodItem item)
         {
             MenuItems.Remove(item);
+            FilteredMenuItems.Remove(item);
         }
 
         private void CategorySelectedBtn(Category category)

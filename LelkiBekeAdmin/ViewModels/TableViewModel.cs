@@ -25,11 +25,17 @@ namespace LelkiBekeAdmin.ViewModels
             RemoveItemCommand = new RelayCommand<TableItem>(async item => RemoveItem(item));
             ModifyItemCommand = new RelayCommand<TableItem>(async item => ModifyItem(item));
             AddItemCommand = new RelayCommand<TableItem>(async item => AddItem(item));
-            SaveCommand = new RelayCommand(async () =>  Save());
+            SaveCommand = new RelayCommand<TableItem>(async item =>  Save(item));
         }
-        private void Save()
+        private void Save(TableItem table)
         {
-            // Save to database
+            var item = TableItems.FirstOrDefault(x => x.id == table.id);
+            if (item != null)
+            {
+                item.name = table.name;
+                item.qr_code_url = table.qr_code_url;
+                item.is_avalable = table.is_avalable;
+            }
         }
         private void AddItem(TableItem item)
         {
