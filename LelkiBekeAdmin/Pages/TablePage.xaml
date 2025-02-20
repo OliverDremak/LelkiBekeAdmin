@@ -54,29 +54,29 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <Frame Padding="10"
-       Margin="10"
-       CornerRadius="8"
-       HasShadow="True">
+                                   Margin="10"
+                                   CornerRadius="8"
+                                   HasShadow="True">
                                 <StackLayout>
                                     <!-- Display the table name -->
                                     <Label Text="{Binding name}"
-               FontSize="20"
-               FontAttributes="Bold"
-               Margin="0,0,0,5" />
+                                           FontSize="20"
+                                           FontAttributes="Bold"
+                                           Margin="0,0,0,5" />
 
                                     <!-- Display the QR Code image -->
                                     <Label Text="{Binding qr_code_url}"
-               Margin="0,0,0,5" />
+                                            Margin="0,0,0,5" />
 
                                     <!-- Display the table ID -->
                                     <Label Text="{Binding id, StringFormat='ID: {0}'}"
-               FontSize="14"
-               TextColor="Gray" />
+                                           FontSize="14"
+                                           TextColor="Gray" />
 
                                     <!-- Display the availability status -->
                                     <Label Text="{Binding is_avalable, StringFormat='Available: {0}'}"
-               FontSize="14"
-               TextColor="Gray" />
+                                           FontSize="14"
+                                           TextColor="Gray" />
                                 </StackLayout>
                             </Frame>
 

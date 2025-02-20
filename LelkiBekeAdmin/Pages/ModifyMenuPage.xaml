@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.ModifyMenuPage"
-             Title="ModifyMenuPage">
-    <VerticalStackLayout>
+             Title="ModifyMenuPage"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Spacing="10">
         <Button Text="Back" Command="{Binding NavigateToMenuCommand}" WidthRequest="80" HorizontalOptions="Start" Margin="10" CornerRadius="25"/>
 
 
-        <Image Source="dotnet_bot.png" HeightRequest="100" HorizontalOptions="Center" />
+        <Image Source="dotnet_bot.png" HeightRequest="200" HorizontalOptions="Center" />
 
         <Label Text="Modify Item" 
                FontSize="24" 

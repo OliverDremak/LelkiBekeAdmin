@@ -17,7 +17,7 @@
     Shell.TabBarUnselectedColor="LightGray">
     <ShellContent ContentTemplate="{DataTemplate local:Pages.MainPage}" Route="MainPage" />
     <ShellContent ContentTemplate="{DataTemplate local:Pages.RegisterPage}" Route="RegisterPage" />
-    
+    <ShellContent ContentTemplate="{DataTemplate local:Pages.ModifyMenuPage}" Route="ModifyMenuPage" />
     <TabBar>
         <!--<Tab Title="Main" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.MainPage}" />
@@ -43,8 +43,8 @@
         <Tab Title="QR" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.QRcodePage}" Route="QRcodePage" />
         </Tab>
-        <Tab Title="Modify">
+        <!--<Tab Title="Modify">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.ModifyMenuPage}" Route="ModifyMenuPage" />
-        </Tab>
+        </Tab>-->
     </TabBar>
 </Shell>
