@@ -3,10 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.StatPage"
              Title="StatPage">
-    <VerticalStackLayout Padding="20">
-        <Label Text="Restaurant Sales Statistics" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
-        <GraphicsView x:Name="chartGraphicsView" HeightRequest="300" WidthRequest="350">
-            <!-- No need for the Drawable here, it's set programmatically -->
-        </GraphicsView>
-    </VerticalStackLayout>
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <!-- Menu Items Section -->
+            <Label Text="Menu Items Sales" FontAttributes="Bold" FontSize="Large"/>
+            <CollectionView ItemsSource="{Binding MenuItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding menu_item}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding total_sold}" FontSize="Medium" HorizontalOptions="End"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <GraphicsView x:Name="chartGraphicsView" HeightRequest="300" WidthRequest="300" HorizontalOptions="Start" >
+
+            </GraphicsView>
+            <Label Text="Summary" FontAttributes="Bold" FontSize="Large"/>
+            <Frame Padding="10" BackgroundColor="#F0F0F0" CornerRadius="8">
+                <StackLayout>
+                    <Label Text="{Binding SummaryDisplay}" FontSize="Medium"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
