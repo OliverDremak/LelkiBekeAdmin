@@ -10,10 +10,8 @@ public partial class StatPage : ContentPage
 		InitializeComponent();
         BindingContext = new StatViewModel();
 
-        // Create a ChartDrawable and pass the SalesData to it
+        // Create a ChartDrawable
         var chartDrawable = new ChartDrawable(((StatViewModel)BindingContext).SalesData);
-
-        // Assign the chartDrawable to the GraphicsView
         chartGraphicsView.Drawable = chartDrawable;
     }
 }

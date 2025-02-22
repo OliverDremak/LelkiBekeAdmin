@@ -17,11 +17,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <GraphicsView x:Name="chartGraphicsView" HeightRequest="300" WidthRequest="300" HorizontalOptions="Start" >
+            <GraphicsView x:Name="chartGraphicsView" HeightRequest="380" WidthRequest="380" Margin="5,0,0,0" HorizontalOptions="Center" >
 
             </GraphicsView>
             <Label Text="Summary" FontAttributes="Bold" FontSize="Large"/>
-            <Frame Padding="10" BackgroundColor="#F0F0F0" CornerRadius="8">
+            <Frame Padding="10"  CornerRadius="8">
                 <StackLayout>
                     <Label Text="{Binding SummaryDisplay}" FontSize="Medium"/>
                 </StackLayout>

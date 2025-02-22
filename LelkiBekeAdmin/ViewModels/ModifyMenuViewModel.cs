@@ -21,7 +21,7 @@ namespace LelkiBekeAdmin.ViewModels
             get => _selectedItem;
             set => SetProperty(ref _selectedItem, value);
         }
-        private string _title;
+        private string _title = "Add Menu Item";
         public string Title { 
             get => _title;
             set => SetProperty(ref _title, value);
@@ -48,11 +48,6 @@ namespace LelkiBekeAdmin.ViewModels
                     Title = "Edit Menu Item";
                     NotUpdated = JsonSerializer.Deserialize<FoodItem>(json);
                 }
-            }
-            else
-            {
-                SelectedItem = new FoodItem();
-                Title = "Add Menu Item";
             }
         }
     }

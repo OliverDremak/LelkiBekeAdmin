@@ -39,6 +39,11 @@ namespace LelkiBekeAdmin.ViewModels
                 new StatModel { Category = "May", Value = 2000 },
                 new StatModel { Category = "June", Value = 2100 },
                 new StatModel { Category = "July", Value = 2200 },
+                new StatModel { Category = "August", Value = 2300 },
+                new StatModel { Category = "September", Value = 2400 },
+                new StatModel { Category = "October", Value = 2500 },
+                new StatModel { Category = "November", Value = 2600 },
+                new StatModel { Category = "December", Value = 2700 }
             };
             SummaryData = new Summary { total_orders = 100, total_revenue = "$1000", average_order_value = "$10" };
 

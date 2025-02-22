@@ -10,30 +10,68 @@ namespace LelkiBekeAdmin.Classes
 {
     public class ChartDrawable : IDrawable
     {
-        private ObservableCollection<StatModel> _salesData;
-
-        // Constructor to accept data
+        private readonly ObservableCollection<StatModel> _salesData;
+        private const float Padding = 40;
+        private const float BarSpacing = 10;
+        private int NumberOfTicks = 5;
         public ChartDrawable(ObservableCollection<StatModel> salesData)
         {
             _salesData = salesData;
-        }
 
+        }
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            float maxHeight = 250;
-            float padding = 30;
-            float barWidth = 40;
-            int maxValue = _salesData.Max(s => s.Value);
-            float scaleFactor = maxHeight / maxValue;
-            float xPosition = padding;
+            if (_salesData == null || !_salesData.Any())
+                return;
+            float chartWidth = dirtyRect.Width - (Padding * 2);
+            float chartHeight = dirtyRect.Height - (Padding * 2);
+            float maxValue = _salesData.Max(s => s.Value);
+            float scaleFactor = chartHeight / maxValue;
+            float barWidth = (chartWidth / _salesData.Count) - BarSpacing;
+            float xAxisY = dirtyRect.Height - Padding; 
+            float yAxisX = Padding;                    
+            canvas.StrokeColor = Colors.Black;
+            canvas.StrokeSize = 2;
+            canvas.DrawLine(yAxisX, xAxisY, dirtyRect.Width - Padding, xAxisY);
+            canvas.DrawLine(yAxisX, Padding, yAxisX, xAxisY);
+            canvas.FontColor = Colors.Black;
+            canvas.FontSize = 14;
+            canvas.StrokeColor = Colors.LightGray;
+            canvas.StrokeSize = 1;
+            for (int i = 0; i <= NumberOfTicks; i++)
+            {
+                float currentValue = i * (maxValue / NumberOfTicks);
+                float tickY = xAxisY - (currentValue * scaleFactor);
+                canvas.DrawLine(yAxisX, tickY, dirtyRect.Width - Padding, tickY);
+                canvas.FontColor = Colors.Black; 
+                canvas.DrawString(
+                    currentValue.ToString("0"),
+                    x: yAxisX - 5,
+                    y: tickY,
+                    horizontalAlignment: HorizontalAlignment.Right
+                );
+            }
+            float xPosition = Padding + (BarSpacing / 2);
+            canvas.FontSize = 14;
             foreach (var stat in _salesData)
             {
                 float barHeight = stat.Value * scaleFactor;
-                canvas.FillColor = Colors.GreenYellow;
-                canvas.FillRectangle(xPosition, maxHeight - barHeight, barWidth, barHeight);
-                canvas.FillColor = Colors.Black;
-                canvas.DrawString(stat.Category, xPosition + (barWidth / 2) - 15, maxHeight + 10, barWidth, 20, HorizontalAlignment.Left, VerticalAlignment.Top);
-                xPosition += barWidth + 10;
+                float yPosition = xAxisY - barHeight;
+                canvas.FillColor = Colors.LimeGreen;
+                canvas.FillRectangle(xPosition, yPosition, barWidth, barHeight);
+                canvas.FontColor = Colors.Black;
+                string categoryLabel = stat.Category;
+                if (_salesData.Count > 7)
+                {
+                    categoryLabel = stat.Category.Substring(0, 1);
+                }
+                canvas.DrawString(
+                    categoryLabel,
+                    x: xPosition + (barWidth / 2),
+                    y: xAxisY + 5,
+                    horizontalAlignment: HorizontalAlignment.Center
+                );
+                xPosition += barWidth + BarSpacing;
             }
         }
     }

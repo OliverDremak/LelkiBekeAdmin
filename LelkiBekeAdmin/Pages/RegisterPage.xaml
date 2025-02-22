@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.RegisterPage"
              Title="RegisterPage">
-    <StackLayout Padding="20" VerticalOptions="Center" BackgroundColor="{StaticResource White}">
+    <StackLayout Padding="20" VerticalOptions="Center">
         <Image Source="logo.png" HeightRequest="100" HorizontalOptions="Center" />
 
         <Label Text="Create an Account" 
