@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LelkiBekeAdmin.Pages.StatPage"
-             Title="StatPage">
+             x:Class="LelkiBekeAdmin.Pages.StatPage">
     <ScrollView>
-        <StackLayout Padding="20" Spacing="20">
-            <!-- Menu Items Section -->
-            <Label Text="Menu Items Sales" FontAttributes="Bold" FontSize="Large"/>
-            <CollectionView ItemsSource="{Binding MenuItems}">
+        <Grid Padding="20"
+          RowSpacing="10"
+          ColumnSpacing="10"
+          VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Title -->
+            <Label Text="Menu Items Sales"
+               FontAttributes="Bold"
+               FontSize="Large"
+               Grid.Row="{OnPlatform Android=0, WinUI=2}"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"/>
+
+            <!-- Menu Items List -->
+            <CollectionView ItemsSource="{Binding MenuItems}"
+                        Grid.Row="{OnPlatform Android=1, WinUI=3}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="{OnPlatform Android=2}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal" Padding="10">
@@ -17,15 +43,41 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <GraphicsView x:Name="chartGraphicsView" HeightRequest="380" WidthRequest="380" Margin="5,0,0,0" HorizontalOptions="Center" >
+            <Frame HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   Grid.Row="{OnPlatform Android=4, WinUI=0}"
+                   Grid.RowSpan="{OnPlatform WinUI=3}"
+                   Grid.Column="{OnPlatform Android=0, WinUI=1}"
+                   Grid.ColumnSpan="{OnPlatform Android=2}"
+                   Background="White"
+                   Margin="10">
+                <GraphicsView x:Name="chartGraphicsView"
+                              HeightRequest="380"
+                              WidthRequest="380">
+                </GraphicsView>
+            </Frame>
+            <!-- Chart -->
 
-            </GraphicsView>
-            <Label Text="Summary" FontAttributes="Bold" FontSize="Large"/>
-            <Frame Padding="10"  CornerRadius="8">
+
+            <!-- Summary Label -->
+            <Label Text="Summary"
+               FontAttributes="Bold"
+               FontSize="Large"
+               Grid.Row="{OnPlatform Android=2, WinUI=0}"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"/>
+
+            <!-- Summary Data -->
+            <Frame Padding="10"
+                   CornerRadius="8"
+                   Grid.Row="{OnPlatform Android=3, WinUI=1}"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="{OnPlatform Android=2}"
+                   HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <Label Text="{Binding SummaryDisplay}" FontSize="Medium"/>
                 </StackLayout>
             </Frame>
-        </StackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

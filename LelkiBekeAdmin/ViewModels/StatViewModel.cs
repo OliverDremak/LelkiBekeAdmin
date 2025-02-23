@@ -14,6 +14,9 @@ namespace LelkiBekeAdmin.ViewModels
     {
         [ObservableProperty]
         private ObservableCollection<StatModel> salesData;
+        [ObservableProperty]
+        private ObservableCollection<TotalSoldItem> menuItems;
+
         private Summary summaryData;
         public Summary SummaryData
         {
@@ -46,6 +49,14 @@ namespace LelkiBekeAdmin.ViewModels
                 new StatModel { Category = "December", Value = 2700 }
             };
             SummaryData = new Summary { total_orders = 100, total_revenue = "$1000", average_order_value = "$10" };
+            MenuItems = new ObservableCollection<TotalSoldItem>
+            {
+                new TotalSoldItem { menu_item = "Pizza", total_sold = 10 },
+                new TotalSoldItem { menu_item = "Burger", total_sold = 20 },
+                new TotalSoldItem { menu_item = "Pasta", total_sold = 30 },
+                new TotalSoldItem { menu_item = "Salad", total_sold = 40 },
+                new TotalSoldItem { menu_item = "Sandwich", total_sold = 50 }
+            };
 
         }
     }
