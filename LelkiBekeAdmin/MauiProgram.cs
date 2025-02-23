@@ -34,6 +34,10 @@ namespace LelkiBekeAdmin
             builder.Services.AddSingleton<QRcodeViewModel>();
             builder.Services.AddSingleton<ModifyMenuPage>();
             builder.Services.AddSingleton<ModifyMenuViewModel>();
+            builder.Services.AddSingleton<ContactMessagesPage>();
+            builder.Services.AddSingleton<ContactMessagesViewModel>();
+            builder.Services.AddSingleton<OpenTimePage>();
+            builder.Services.AddSingleton<OpenTimeViewModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
