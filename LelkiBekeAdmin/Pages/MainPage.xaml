@@ -3,45 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.MainPage">
 
-    <StackLayout Padding="20" VerticalOptions="Center">
-        <Image Source="dotnet_bot.png" HeightRequest="100" HorizontalOptions="Center" />
+    <Grid Padding="20" HorizontalOptions="{OnPlatform WinUI=Center}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnPlatform WinUI=500}"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="dotnet_bot.png" HeightRequest="100" 
+           HorizontalOptions="Center" Grid.Row="0"/>
 
         <Label Text="Welcome Admin!" 
-               FontSize="24" 
-               FontAttributes="Bold" 
-               HorizontalOptions="Center" 
-               TextColor="{StaticResource Header}"/>
+           FontSize="{OnPlatform Android=24, WinUI=28}" 
+           FontAttributes="Bold" 
+           HorizontalOptions="Center" 
+           TextColor="{StaticResource Header}" 
+           Grid.Row="1"/>
+
         <Label Text="Login for more" 
-               FontSize="14" 
-               HorizontalOptions="Center" />
-        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="0,10">
-            <Entry Placeholder="Email" TextColor="Black"  Margin="0" HeightRequest="40"/>
+           FontSize="{OnPlatform Android=14, WinUI=16}" 
+           HorizontalOptions="Center" 
+           Grid.Row="2"/>
+
+        <Frame BackgroundColor="White" CornerRadius="30" 
+           HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+           Padding="0" VerticalOptions="Center"
+           Grid.Row="3" Margin="5">
+            <Entry Placeholder="Email" IsPassword="False" 
+               TextColor="Black" 
+               Margin="{OnPlatform Android=5, WinUI=0}"
+               VerticalOptions="FillAndExpand"
+               VerticalTextAlignment="Center"
+               HeightRequest="{OnPlatform Android=50, WinUI=60}" />
         </Frame>
-        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="0,10">
-                <Entry Placeholder="Password" IsPassword="True" TextColor="Black" Margin="0" HeightRequest="40" />
+
+        <Frame BackgroundColor="White" CornerRadius="30" 
+           HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+           Padding="0" VerticalOptions="Center"
+           Grid.Row="4" Margin="5">
+            <Entry Placeholder="Password" IsPassword="True"
+               TextColor="Black" 
+               Margin="{OnPlatform Android=5, WinUI=0}" 
+               VerticalOptions="FillAndExpand"
+               VerticalTextAlignment="Center"
+               HeightRequest="{OnPlatform Android=50, WinUI=60}" />
         </Frame>
 
         <Button Text="LOGIN" 
-                BackgroundColor="{StaticResource ButtonDef}" 
-                TextColor="White" 
-                CornerRadius="25" 
-                HeightRequest="50"
-                Margin="0,10"
-                Command="{Binding NavigateToMenuCommand}"/>
+            BackgroundColor="{StaticResource ButtonDef}" 
+            TextColor="White" 
+            CornerRadius="25" 
+            HeightRequest="{OnPlatform Android=50, WinUI=60}"
+            Padding="{OnPlatform Android='10,5', WinUI='15,8'}"
+            Margin="10"
+            Command="{Binding NavigateToMenuCommand}"
+            Grid.Row="5"/>
 
         <Label Text="Forgot password?" 
-               FontSize="14" 
-               TextColor="{StaticResource Header}" 
-               HorizontalOptions="Center"
-               Margin="0,10"/>
+           FontSize="{OnPlatform Android=14, WinUI=16}" 
+           TextColor="{StaticResource Header}" 
+           HorizontalOptions="Center"
+           Margin="0,10"
+           Grid.Row="6"/>
 
         <Label Text="Don't have an account? "
-               FontSize="14" 
-               HorizontalOptions="Center">
+           FontSize="{OnPlatform Android=14, WinUI=16}" 
+           HorizontalOptions="Center"
+           Grid.Row="7">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}" />
             </Label.GestureRecognizers>
         </Label>
-    </StackLayout>
-
+    </Grid>
 </ContentPage>
