@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LelkiBekeAdmin.Pages.OpenTimePage"
-             Title="OpenTimePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="LelkiBekeAdmin.Pages.OpenTimePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <Label Text="Edit Opening Hours" FontSize="24" FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+
+                <CollectionView ItemsSource="{Binding OpeningHours}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5" BackgroundColor="White" CornerRadius="10">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding day_of_week}" FontSize="18" FontAttributes="Bold"/>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Closed:" VerticalOptions="Center"/>
+                                        <CheckBox IsChecked="{Binding is_closed, Converter={StaticResource IntToBoolConverter}}"/>
+                                    </HorizontalStackLayout>
+                                     <HorizontalStackLayout>
+                                        <TimePicker Time="{Binding OpenTimeSpan}"/>
+                                        <Label Text=" - " VerticalOptions="{OnPlatform Android=Center}"/>
+                                        <TimePicker Time="{Binding CloseTimeSpan}"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Save Changes" Command="{Binding SaveCommand}" BackgroundColor="#007AFF" TextColor="White"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

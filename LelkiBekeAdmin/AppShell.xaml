@@ -46,5 +46,11 @@
         <!--<Tab Title="Modify">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.ModifyMenuPage}" Route="ModifyMenuPage" />
         </Tab>-->
+        <Tab Title="User Messages" Icon="{StaticResource userIcon}">
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.ContactMessagesPage}" Route="ContactMessagesPage" />
+        </Tab>
+        <Tab Title="Open Hours">
+            <ShellContent ContentTemplate="{DataTemplate local:Pages.OpenTimePage}" Route="OpenTimePage"/>
+        </Tab>
     </TabBar>
 </Shell>

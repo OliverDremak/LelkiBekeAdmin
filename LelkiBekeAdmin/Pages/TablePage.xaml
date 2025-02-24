@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.TablePage"
-             Title="TablePage">
+             >
     <Grid RowDefinitions="*,*,*">
         <Button Text="+" 
                 Grid.Row="2"
@@ -20,13 +20,13 @@
                 VerticalOptions="End"
                 HorizontalOptions="End"
                 Command="{Binding BindingContext.NavigateToModifyCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
-        <CollectionView Margin="0" ItemsSource="{Binding TableItems}" Grid.RowSpan="3">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <SwipeView>
-                            <SwipeView.LeftItems>
-                                <SwipeItems Mode="Reveal">
-                                    <!--<SwipeItemView>
+        <CollectionView Margin="{OnPlatform WinUI='100,0,100,0'}" ItemsSource="{Binding TableItems}" Grid.RowSpan="3">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Reveal">
+                                <!--<SwipeItemView>
                                         <SwipeItemView.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.RemoveItemCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
                                         </SwipeItemView.GestureRecognizers>
@@ -52,56 +52,61 @@
                                                BackgroundColor="Red"
                                                HasShadow="True"
                                                WidthRequest="100">
-                                            <StackLayout Orientation="Horizontal" 
+                                        <StackLayout Orientation="Horizontal" 
                                                          HorizontalOptions="Center"
                                                          VerticalOptions="Center">
-                                                <Image Source="{x:StaticResource RemoveIcon}" 
+                                            <Image Source="{x:StaticResource RemoveIcon}" 
                                                        HeightRequest="40" 
                                                        WidthRequest="40" />
-                                            </StackLayout>
-                                        </Frame>
-                                    </SwipeItemView>
-                             </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <Frame Padding="10"
+                                        </StackLayout>
+                                    </Frame>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Frame Padding="10"
                                    Margin="10"
                                    CornerRadius="8"
                                    HasShadow="True"
                                    BackgroundColor="{AppThemeBinding Light='White', Dark='DarkGrey'}">
-                                <StackLayout>
-                                    <!-- Editable Table Name -->
-                                    <Entry Text="{Binding name, Mode=TwoWay}"
+                            <StackLayout>
+                                <!-- Editable Table Name -->
+                                <Entry Text="{Binding name, Mode=TwoWay}"
                                            FontSize="20"
                                            FontAttributes="Bold"
                                            Margin="0,0,0,5" 
                                            TextColor="{StaticResource Header}"/>
 
-                                    <!-- Editable QR Code URL -->
-                                    <Entry Text="{Binding qr_code_url, Mode=TwoWay}"
+                                <!-- Editable QR Code URL -->
+                                <Entry Text="{Binding qr_code_url, Mode=TwoWay}"
                                             Margin="0,0,0,5" />
 
-                                    <!-- Table ID (read-only in this example) -->
-                                    <Entry Text="{Binding id, StringFormat='ID: {0}', Mode=TwoWay}"
+                                <!-- Table ID (read-only in this example) -->
+                                <Entry Text="{Binding id, StringFormat='ID: {0}', Mode=TwoWay}"
                                            FontSize="14"
                                            TextColor="Gray"
                                            IsReadOnly="True" />
 
-                                    <!-- Editable Availability using a Switch -->
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                        <Label Text="Available:" FontSize="14" TextColor="Gray" VerticalOptions="Center"/>
-                                        <Switch IsToggled="{Binding is_available, Mode=TwoWay}" />
-                                    </StackLayout>
-                                    <Button Text="Save"
-                                            Command="{Binding BindingContext.SaveCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"
-                                            HorizontalOptions="End"
-                                            Margin="0,10,0,0" />
+                                <!-- Editable Availability using a Switch -->
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                    <Label Text="Available:" FontSize="14" TextColor="Gray" VerticalOptions="Center"/>
+                                    <Switch IsToggled="{Binding is_available, Mode=TwoWay}" />
                                 </StackLayout>
-                            </Frame>
-
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
+                                <Button Text="Save"
+                                            Command="{Binding BindingContext.SaveCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"
+                                            HorizontalOptions="Start"
+                                            Margin="0,10,0,10" 
+                                            WidthRequest="100"/>
+                                <StackLayout Orientation="Horizontal" IsVisible="{OnPlatform WinUI=True, Default=False}">
+                                    <Button Text="Delete" BackgroundColor="Red" TextColor="White" WidthRequest="100"
+                                            Command="{Binding BindingContext.RemoveItemCommand, 
+                                                     Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

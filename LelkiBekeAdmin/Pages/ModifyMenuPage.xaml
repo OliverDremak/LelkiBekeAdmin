@@ -5,10 +5,20 @@
              Title="ModifyMenuPage"
              Shell.NavBarIsVisible="False">
     <VerticalStackLayout Spacing="10">
-        <Button Text="Back" Command="{Binding NavigateToMenuCommand}" WidthRequest="80" HorizontalOptions="Start" Margin="10" CornerRadius="25"/>
+        <HorizontalStackLayout IsVisible="{OnPlatform WinUI=true, Default=false}">
+            <Button Text="Back" Command="{Binding NavigateToMenuCommand}" WidthRequest="{OnPlatform Android=80, WinUI=150}" HorizontalOptions="Start" Margin="10" CornerRadius="25"/>
+            <Button Text="SAVE" 
+                    BackgroundColor="{StaticResource ButtonDef}" 
+                    TextColor="White" 
+                    CornerRadius="25" 
+                    HeightRequest="50"
+                    Margin="10"
+                    WidthRequest="150"/>
+        </HorizontalStackLayout>
+        <Button Text="Back" Command="{Binding NavigateToMenuCommand}" IsVisible="{OnPlatform WinUI=false, Default=true}" WidthRequest="80" HorizontalOptions="Start" Margin="10" CornerRadius="25"/>
 
 
-        <Image Source="dotnet_bot.png" HeightRequest="200" HorizontalOptions="Center" />
+        <Image Source="dotnet_bot.png" HeightRequest="100" HorizontalOptions="Center" />
 
         <Label Text="{Binding Title, Mode=TwoWay}" 
                FontSize="24" 
@@ -17,40 +27,72 @@
                TextColor="{StaticResource Header}"
                VerticalOptions="Start"/>
 
-        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
-            <Entry Placeholder="Category Name" Text="{Binding SelectedItem.Category_name, Mode=TwoWay}" TextColor="Black" HeightRequest="40"/>
+        <Frame BackgroundColor="White" CornerRadius="30" 
+           HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+           Padding="0" VerticalOptions="Center"
+           Grid.Row="3" Margin="5">
+            <Entry Placeholder="Category Name" IsPassword="False" 
+               TextColor="Black" 
+               Text="{Binding SelectedItem.Category_name, Mode=TwoWay}"
+               Margin="{OnPlatform Android=5, WinUI=0}"
+               VerticalOptions="FillAndExpand"
+               VerticalTextAlignment="Center"
+               HeightRequest="{OnPlatform Android=50, WinUI=60}" />
         </Frame>
 
-        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
-            <Entry Placeholder="Name" Text="{Binding SelectedItem.Name, Mode=TwoWay }" TextColor="Black" HeightRequest="40"/>
+        <Frame BackgroundColor="White" CornerRadius="30" 
+           HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+           Padding="0" VerticalOptions="Center"
+           Grid.Row="3" Margin="5">
+            <Entry Placeholder="Name" IsPassword="False" 
+               TextColor="Black" 
+               Margin="{OnPlatform Android=5, WinUI=0}"
+                   Text="{Binding SelectedItem.Name, Mode=TwoWay}"
+               VerticalOptions="FillAndExpand"
+               VerticalTextAlignment="Center"
+               HeightRequest="{OnPlatform Android=50, WinUI=60}" />
         </Frame>
 
-        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="100" Margin="10">
-            <Editor Placeholder="Description" Text="{Binding SelectedItem.Description, Mode=TwoWay}" TextColor="Black" HeightRequest="80" />
+        <Frame BackgroundColor="White" CornerRadius="30" 
+           HeightRequest="{OnPlatform Android=100, WinUI=100}" 
+           Padding="0" VerticalOptions="Center"
+           Grid.Row="3" Margin="5">
+            <Editor Placeholder="Description" Text="{Binding SelectedItem.Description, Mode=TwoWay}" 
+               TextColor="Black" 
+               Margin="{OnPlatform Android=5, WinUI=0}"
+               VerticalOptions="FillAndExpand"
+               VerticalTextAlignment="Center"
+               HeightRequest="{OnPlatform Android=50, WinUI=100}" />
         </Frame>
 
-        <Frame BackgroundColor="White" CornerRadius="30" HeightRequest="50" Margin="10">
-            <Entry Placeholder="Price" Text="{Binding SelectedItem.Price, Mode=TwoWay}" TextColor="Black" Keyboard="Numeric" HeightRequest="40"/>
+        <Frame BackgroundColor="White" CornerRadius="30" 
+           HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+           Padding="0" VerticalOptions="Center"
+           Grid.Row="3" Margin="5">
+            <Entry Placeholder="Price" Text="{Binding SelectedItem.Price, Mode=TwoWay}" IsPassword="False" 
+               TextColor="Black" 
+               Margin="{OnPlatform Android=5, WinUI=0}"
+               VerticalOptions="FillAndExpand"
+               VerticalTextAlignment="Center"
+               HeightRequest="{OnPlatform Android=50, WinUI=60}" />
         </Frame>
-        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End" IsVisible="{OnPlatform Default=true, WinUI=false}">
             <Button Text="SAVE" 
-        BackgroundColor="{StaticResource ButtonDef}" 
-        TextColor="White" 
-        CornerRadius="25" 
-        HeightRequest="50"
-        Margin="10"
-                    WidthRequest="150"
-        />
+                    BackgroundColor="{StaticResource ButtonDef}" 
+                    TextColor="White" 
+                    CornerRadius="25" 
+                    HeightRequest="50"
+                    Margin="10"
+                    WidthRequest="150"/>
+
 
             <Button Text="CANCEL" 
-        BackgroundColor="{StaticResource Header}" 
-        TextColor="White" 
-        CornerRadius="25" 
-        HeightRequest="50"
-        Margin="10"
-                    WidthRequest="150"
-        />
+                    BackgroundColor="{StaticResource Header}" 
+                    TextColor="White" 
+                    CornerRadius="25" 
+                    HeightRequest="50"
+                    Margin="10"
+                    WidthRequest="150"/>
         </HorizontalStackLayout>
-        
     </VerticalStackLayout>
 </ContentPage>

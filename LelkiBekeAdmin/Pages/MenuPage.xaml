@@ -2,9 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.MenuPage"
-             Title="MenuPage"
              >
-    <Grid RowDefinitions="0.5*,5*,*">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{OnPlatform Android=0.5*, WinUI=1*}"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Button Text="+" 
                         Grid.Row="2"
                         FontSize="30"
@@ -22,16 +26,16 @@
                         ZIndex="10"
                         Command="{Binding BindingContext.AddItemCommand, Source={RelativeSource AncestorType={x:Type Grid}}}" CommandParameter="{Binding .}" />
 
-        <CollectionView ItemsSource="{Binding Categories}" ItemsLayout="HorizontalList">
+        <CollectionView ItemsSource="{Binding Categories}" ItemsLayout="HorizontalList" HorizontalOptions="{OnPlatform WinUI=Center}" VerticalOptions="{OnPlatform WinUI=Center}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Button Text="{Binding Name}" BorderColor="{StaticResource ButtonDef}" BorderWidth="2" BackgroundColor="{StaticResource ButtonHover}" WidthRequest="100" Margin="10,10,10,0" Command="{Binding BindingContext.CategorySelectedBtnCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}"/>
+                    <Button Text="{Binding Name}" BorderColor="{StaticResource ButtonDef}" BorderWidth="2" BackgroundColor="{StaticResource ButtonHover}" WidthRequest="100" Margin="{OnPlatform Android=10, WinUI=5}" Command="{Binding BindingContext.CategorySelectedBtnCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}" HeightRequest="{OnPlatform WinUI=50}" VerticalOptions="{OnPlatform WinUI=Center}"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <!--Datatemplate : SwipeView to delete item or update + update page-->
 
-        <CollectionView Margin="0" ItemsSource="{Binding FilteredMenuItems}"  VerticalOptions="Fill" Grid.Row="1" Grid.RowSpan="2">
+        <CollectionView Margin="{OnPlatform WinUI='100,0,100,0'}" ItemsSource="{Binding FilteredMenuItems}"  VerticalOptions="Fill" Grid.Row="1" Grid.RowSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
@@ -105,6 +109,17 @@
                                    FontSize="16"
                                    FontAttributes="Bold"
                                    TextColor="Green" />
+                                <StackLayout Orientation="Horizontal" IsVisible="{OnPlatform WinUI=True, Default=False}">
+                                    <Button Text="Edit" BackgroundColor="Blue" TextColor="White"
+                                            Command="{Binding BindingContext.NavigateToModifyCommand, 
+                                                     Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Text="Delete" BackgroundColor="Red" TextColor="White"
+                                            Command="{Binding BindingContext.RemoveItemCommand, 
+                                                     Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
                             </StackLayout>
                         </Frame>
                     </SwipeView>
