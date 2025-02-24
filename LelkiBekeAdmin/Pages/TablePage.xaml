@@ -20,7 +20,7 @@
             <!-- CollectionView with items -->
             <CollectionView Grid.Row="0"
                           Margin="{OnPlatform WinUI='100,20,100,20', Default='10,10,10,10'}"
-                          ItemsSource="{Binding TableItems}" Grid.RowSpan="{OnPlatform Android=2}">
+                          ItemsSource="{Binding TableItems}" Grid.RowSpan="2">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
@@ -48,8 +48,8 @@
                                    Margin="{OnPlatform WinUI='10,5', Default='8,4'}"
                                    CornerRadius="12"
                                    HasShadow="True"
-                                   BorderColor="{AppThemeBinding Light='#EEEEEE', Dark='#333333'}"
-                                   BackgroundColor="{AppThemeBinding Light='White', Dark='#2D2D2D'}">
+                                   BorderColor="{AppThemeBinding Light='#EEEEEE', Dark='#333333'}">
+
                                 <Grid RowSpacing="10" ColumnSpacing="15">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>

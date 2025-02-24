@@ -47,7 +47,11 @@ namespace LelkiBekeAdmin.ViewModels
                     SelectedItem = JsonSerializer.Deserialize<FoodItem>(json);
                     Title = "Edit Menu Item";
                     NotUpdated = JsonSerializer.Deserialize<FoodItem>(json);
-                }
+                }              
+            }
+            else
+            {
+                SelectedItem = new FoodItem();
             }
         }
     }

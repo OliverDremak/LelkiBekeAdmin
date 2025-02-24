@@ -77,8 +77,7 @@
                         <Frame Padding="10"
                                    Margin="10"
                                    CornerRadius="8"
-                                   HasShadow="True"
-                                   BackgroundColor="{AppThemeBinding Light='White', Dark='DarkGrey'}">
+                                   HasShadow="True">
                             <StackLayout>
                                 <!-- Kép megjelenítése -->
                                 <Image Source="{Binding Image_url}"
