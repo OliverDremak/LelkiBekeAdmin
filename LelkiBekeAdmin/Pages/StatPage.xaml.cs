@@ -13,5 +13,6 @@ public partial class StatPage : ContentPage
         // Create a ChartDrawable
         var chartDrawable = new ChartDrawable(((StatViewModel)BindingContext).SalesData);
         chartGraphicsView.Drawable = chartDrawable;
+
     }
 }

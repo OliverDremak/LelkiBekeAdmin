@@ -15,6 +15,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -45,15 +46,28 @@
             </CollectionView>
             <Frame HorizontalOptions="Center"
                    VerticalOptions="Start"
-                   Grid.Row="{OnPlatform Android=4, WinUI=0}"
+                   Grid.Row="{OnPlatform Android=4, WinUI=3}"
                    Grid.RowSpan="{OnPlatform WinUI=3}"
                    Grid.Column="{OnPlatform Android=0, WinUI=1}"
                    Grid.ColumnSpan="{OnPlatform Android=2}"
                    Background="White"
                    Margin="10">
-                <GraphicsView x:Name="chartGraphicsView"
+                <GraphicsView x:Name="piechartGraphicsView"
                               HeightRequest="380"
                               WidthRequest="380">
+                </GraphicsView>
+            </Frame>
+            <Frame HorizontalOptions="Center"
+       VerticalOptions="Start"
+       Grid.Row="{OnPlatform Android=4, WinUI=0}"
+       Grid.RowSpan="{OnPlatform WinUI=3}"
+       Grid.Column="{OnPlatform Android=0, WinUI=1}"
+       Grid.ColumnSpan="{OnPlatform Android=2}"
+       Background="White"
+       Margin="10">
+                <GraphicsView x:Name="chartGraphicsView"
+                  HeightRequest="380"
+                  WidthRequest="380">
                 </GraphicsView>
             </Frame>
             <!-- Chart -->
