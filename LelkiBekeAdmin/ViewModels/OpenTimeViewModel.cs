@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using LelkiBekeAdmin.API;
 using LelkiBekeAdmin.Classes;
 using System;
@@ -15,11 +16,20 @@ namespace LelkiBekeAdmin.ViewModels
     {
         [ObservableProperty]
         private ObservableCollection<OpenHours> _openingHours;
+        public ICommand SaveItemCommand { get; }
 
         public OpenTimeViewModel()
         {
             _openingHours = new ObservableCollection<OpenHours>();
             LoadOpenHours();
+            SaveItemCommand = new RelayCommand<OpenHours>(async item =>
+            {
+                var result = await BackEndApi.SetOpenHours<OpenHours>(item);
+                if (result != null)
+                {
+                    LoadOpenHours();
+                }
+            });
         }
 
         private async void LoadOpenHours()

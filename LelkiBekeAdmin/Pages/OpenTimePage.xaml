@@ -3,35 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.OpenTimePage"
              >
-    <ContentPage.Content>
-        <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="15">
-                <Label Text="Edit Opening Hours" FontSize="24" FontAttributes="Bold"
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Edit Opening Hours" FontSize="24" FontAttributes="Bold"
                        HorizontalOptions="Center"/>
 
-                <CollectionView ItemsSource="{Binding OpeningHours}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Padding="10" Margin="5" BackgroundColor="Black" CornerRadius="10">
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding DayOfWeek}" FontSize="18" FontAttributes="Bold"/>
-                                    <HorizontalStackLayout>
-                                        <Label Text="Closed:" VerticalOptions="Center"/>
-                                        <CheckBox IsChecked="{Binding IsClosedBool}"/>
-                                    </HorizontalStackLayout>
-                                    <HorizontalStackLayout>
-                                        <TimePicker Time="{Binding OpenTimeSpan}"/>
-                                        <Label Text=" - " VerticalOptions="Center"/>
-                                        <TimePicker Time="{Binding CloseTimeSpan}"/>
-                                    </HorizontalStackLayout>
-                                </VerticalStackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-
-                <Button Text="Save Changes" Command="{Binding SaveCommand}" BackgroundColor="#007AFF" TextColor="White"/>
-            </VerticalStackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+            <CollectionView ItemsSource="{Binding OpeningHours}" x:Name="OpeningHoursCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding DayOfWeek}" FontSize="18" FontAttributes="Bold"/>
+                                <HorizontalStackLayout>
+                                    <Label Text="Closed:" VerticalOptions="Center"/>
+                                    <CheckBox IsChecked="{Binding IsClosedBool}"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <TimePicker Time="{Binding OpenTimeSpan}"/>
+                                    <Label Text=" - " VerticalOptions="Center"/>
+                                    <TimePicker Time="{Binding CloseTimeSpan}"/>
+                                </HorizontalStackLayout>
+                                <Button Text="Save"
+                                        Command="{Binding BindingContext.SaveItemCommand, 
+                                                 Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                        CommandParameter="{Binding .}" 
+                                        BackgroundColor="#007AFF" TextColor="White"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

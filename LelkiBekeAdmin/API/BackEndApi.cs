@@ -20,6 +20,8 @@ namespace LelkiBekeAdmin.API
         public static Task<T?> GetTopSellingItems<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/salesTop-items");
         public static Task<T?> GetSalesSummary<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/salesSummary");
         public static Task<T?> GetOpenHours<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/opening-hours");
+        public static Task<T?> SetOpenHours<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/update-opening-hours", data);
+        public static Task<T?> GetContactMessages<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/contact-messages");
     }
 }
 

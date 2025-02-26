@@ -36,8 +36,13 @@ namespace LelkiBekeAdmin.ViewModels
             LoadSalesData();
             LoadTopSellingItems();
             LoadSalesSummary();
+        }
+
+        partial void OnSalesDataChanged(ObservableCollection<StatModel> value)
+        {
             ChartDrawable = new ChartDrawable(SalesData);
         }
+
         private async void LoadSalesData()
         {
             var salesData = await BackEndApi.GetDailySales<List<StatModel>>();

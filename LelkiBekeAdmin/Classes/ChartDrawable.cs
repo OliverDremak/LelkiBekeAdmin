@@ -21,7 +21,7 @@ namespace LelkiBekeAdmin.Classes
         }
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            if (_salesData == null || !_salesData.Any())
+            if (_salesData == null)
                 return;
             float chartWidth = dirtyRect.Width - (Padding * 2);
             float chartHeight = dirtyRect.Height - (Padding * 2);

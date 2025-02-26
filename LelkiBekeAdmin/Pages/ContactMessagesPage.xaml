@@ -5,69 +5,76 @@
              x:Class="LelkiBekeAdmin.Pages.ContactMessagesPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              >
-    <ContentPage.Content>
-        <Grid Padding="20">
-            <!-- Scrollable layout for small screens -->
-            <ScrollView>
-                <VerticalStackLayout Spacing="15">
+    <Grid Padding="20">
+    <!-- Scrollable layout for small screens -->
+    <ScrollView>
+        <VerticalStackLayout Spacing="15">
 
-                    <!-- Title -->
-                    <Label Text="User Messages"
-                           FontSize="24"
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center"
-                           TextColor="#333"/>
+            <!-- Title -->
+            <Label Text="User Messages"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#333"/>
 
-                    <!-- Messages List -->
-                    <CollectionView SelectionMode="None">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame Padding="15"
-                                       Margin="5"
-                                       BackgroundColor="White"
-                                       CornerRadius="10"
-                                       HasShadow="True">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
+            <!-- Messages List -->
+                <CollectionView ItemsSource="{Binding ContactMessages}" 
+                               HeightRequest="500">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="15"
+                                   Margin="5"
+                                   BackgroundColor="White"
+                                   CornerRadius="10"
+                                   HasShadow="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
-                                        <!-- User Name -->
-                                        <Label Text="John Doe"
-                                               FontSize="18"
-                                               FontAttributes="Bold"
-                                               TextColor="#333"/>
+                                <!-- User Name -->
+                                <Label Text="{Binding name}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="#333"/>
 
-                                        <!-- User Email -->
-                                        <Label Text="johndoe@example.com"
-                                               FontSize="14"
-                                               TextColor="Gray"
-                                               Grid.Row="1"/>
+                                <!-- User Email -->
+                                <Label Text="{Binding email}"
+                                           FontSize="14"
+                                           TextColor="Gray"
+                                           Grid.Row="1"/>
 
-                                        <!-- Message Content -->
-                                        <Label Text="This is a user message. It could be feedback or any other information."
-                                               FontSize="16"
-                                               LineBreakMode="WordWrap"
-                                               Grid.Row="2"
-                                               TextColor="#555"/>
+                                <!-- Message Content -->
+                                <Label Text="{Binding message}"
+                                           FontSize="16"
+                                           LineBreakMode="WordWrap"
+                                           Grid.Row="2"
+                                           TextColor="#555"/>
+                                <!-- Answer Button -->
+                                <Button Text="Answer"
+                                            Grid.Row="3"
+                                            Margin="5,10,5,0"
+                                            BackgroundColor="#007AFF"
+                                            TextColor="White"
+                                            />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="No messages available" 
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   FontSize="18"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
 
-                                        <!-- Answer Button -->
-                                        <Button Text="Answer"
-                                                Grid.Row="3"
-                                                Margin="5,10,5,0"
-                                                BackgroundColor="#007AFF"
-                                                TextColor="White"
-                                                />
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-                </VerticalStackLayout>
-            </ScrollView>
-        </Grid>
-    </ContentPage.Content>
+        </VerticalStackLayout>
+    </ScrollView>
+    </Grid>
 </ContentPage>
