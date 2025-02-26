@@ -8,11 +8,11 @@ public partial class StatPage : ContentPage
 	public StatPage()
 	{
 		InitializeComponent();
-        BindingContext = new StatViewModel();
+        var viewModel = new StatViewModel();
+        BindingContext = viewModel;
 
-        // Create a ChartDrawable
-        var chartDrawable = new ChartDrawable(((StatViewModel)BindingContext).SalesData);
-        chartGraphicsView.Drawable = chartDrawable;
+        // Bind the ChartDrawable from the view model
+        chartGraphicsView.Drawable = viewModel.ChartDrawable;
 
     }
 }

@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using LelkiBekeAdmin.Classes;
 using LelkiBekeAdmin.Pages;
 using System.Text.Json;
+using LelkiBekeAdmin.API;
 
 namespace LelkiBekeAdmin.ViewModels
 {
@@ -17,14 +18,12 @@ namespace LelkiBekeAdmin.ViewModels
     {
         public ObservableCollection<FoodItem> MenuItems { get; private set; } = new ObservableCollection<FoodItem>();
         public ObservableCollection<Category> Categories { get; private set; } = new ObservableCollection<Category>();
-        public ObservableCollection<FoodItem> FilteredMenuItems { get;  set; } = new ObservableCollection<FoodItem>();
+        public ObservableCollection<FoodItem> FilteredMenuItems { get; set; } = new ObservableCollection<FoodItem>();
         public FoodItem SelectedItem { get; set; }
         public ICommand NavigateToModifyCommand { get; }
         public ICommand RemoveItemCommand { get; }
         public ICommand CategorySelectedBtnCommand { get; }
         public ICommand AddItemCommand { get; }
-
-
 
         public MenuViewModel()
         {
@@ -43,8 +42,8 @@ namespace LelkiBekeAdmin.ViewModels
                 var json = JsonSerializer.Serialize(item);
                 await Shell.Current.GoToAsync($"//{nameof(ModifyMenuPage)}?menuItem={Uri.EscapeDataString(json)}");
             });
-
         }
+
         private async Task RemoveItem(FoodItem item)
         {
             MenuItems.Remove(item);
@@ -56,7 +55,7 @@ namespace LelkiBekeAdmin.ViewModels
             IEnumerable<FoodItem> items;
             if (category.Name != "All")
             {
-                items = MenuItems.Where(x => x.Category_name == category.Name);
+                items = MenuItems.Where(x => x.category_name == category.Name);
                 FilteredMenuItems.Clear();
                 foreach (var item in items)
                 {
@@ -71,29 +70,24 @@ namespace LelkiBekeAdmin.ViewModels
                     FilteredMenuItems.Add(item);
                 }
             }
-
-
         }
 
-        private void LoadMenuItems()
+        private async void LoadMenuItems()
         {
-            var Examples = new List<FoodItem>()
+            var menuItems = await BackEndApi.GetMenu<List<FoodItem>>();
+            if (menuItems != null)
             {
-                new FoodItem { Id = 1, Category_name = "Pizza", Name = "Margherita", Description = "Tomato, mozzarella, basil", Price = "6.50", Image_url = "https://www.pizzapizza.ca/wp-content/uploads/2019/06/PP_Web_2019_06_13_0001.jpg" },
-                new FoodItem { Id = 2, Category_name = "Pizza", Name = "Pepperoni", Description = "Tomato, mozzarella, pepperoni", Price = "7.50", Image_url = "https://www.pizzapizza.ca/wp-content/uploads/2019/06/PP_Web_2019_06_13_0001.jpg" },
-                new FoodItem { Id = 3, Category_name = "Pi22zza", Name = "Hawaiian", Description = "Tomato, mozzarella, ham, pineapple", Price = "8.50", Image_url = "https://www.pizzapizza.ca/wp-content/uploads/2019/06/PP_Web_2019_06_13_0001.jpg" },
-                new FoodItem { Id = 4, Category_name = "Drink", Name = "Cola", Description = "Coca cola", Price = "3.00", Image_url = "" }
-            };
-            foreach (var item in Examples)
-            {
-                MenuItems.Add(item);
-                FilteredMenuItems.Add(item);
-            }
-            var categories = Examples.Select(x => x.Category_name).Distinct();
-            Categories.Add(new Category { Name = "All" });
-            foreach (var category in categories)
-            {
-                Categories.Add(new Category { Name = category });
+                foreach (var item in menuItems)
+                {
+                    MenuItems.Add(item);
+                    FilteredMenuItems.Add(item);
+                }
+                var categories = menuItems.Select(x => x.category_name).Distinct();
+                Categories.Add(new Category { Name = "All" });
+                foreach (var category in categories)
+                {
+                    Categories.Add(new Category { Name = category });
+                }
             }
         }
     }

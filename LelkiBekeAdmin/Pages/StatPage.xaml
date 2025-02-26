@@ -46,29 +46,16 @@
             </CollectionView>
             <Frame HorizontalOptions="Center"
                    VerticalOptions="Start"
-                   Grid.Row="{OnPlatform Android=4, WinUI=3}"
+                   Grid.Row="{OnPlatform Android=4, WinUI=0}"
                    Grid.RowSpan="{OnPlatform WinUI=3}"
                    Grid.Column="{OnPlatform Android=0, WinUI=1}"
                    Grid.ColumnSpan="{OnPlatform Android=2}"
                    Background="White"
                    Margin="10">
-                <GraphicsView x:Name="piechartGraphicsView"
+                <GraphicsView x:Name="chartGraphicsView"
                               HeightRequest="380"
                               WidthRequest="380">
-                </GraphicsView>
-            </Frame>
-            <Frame HorizontalOptions="Center"
-       VerticalOptions="Start"
-       Grid.Row="{OnPlatform Android=4, WinUI=0}"
-       Grid.RowSpan="{OnPlatform WinUI=3}"
-       Grid.Column="{OnPlatform Android=0, WinUI=1}"
-       Grid.ColumnSpan="{OnPlatform Android=2}"
-       Background="White"
-       Margin="10">
-                <GraphicsView x:Name="chartGraphicsView"
-                  HeightRequest="380"
-                  WidthRequest="380">
-                </GraphicsView>
+                            </GraphicsView>
             </Frame>
             <!-- Chart -->
 
@@ -89,7 +76,7 @@
                    Grid.ColumnSpan="{OnPlatform Android=2}"
                    HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="{Binding SummaryDisplay}" FontSize="Medium"/>
+                    <Label Text="{Binding SummaryData.TotalRevenue}" FontSize="Medium"/>
                 </StackLayout>
             </Frame>
         </Grid>

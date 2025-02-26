@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LelkiBekeAdmin.API;
 using LelkiBekeAdmin.Classes;
 
 namespace LelkiBekeAdmin.ViewModels
@@ -32,14 +33,14 @@ namespace LelkiBekeAdmin.ViewModels
             var item = TableItems.FirstOrDefault(x => x.id == table.id);
             if (item != null)
             {
-                item.name = table.name;
+                item.table_number = table.table_number;
                 item.qr_code_url = table.qr_code_url;
-                item.is_avalable = table.is_avalable;
+                item.is_available = table.is_available;
             }
         }
         private void AddItem(TableItem item)
         {
-            TableItems.Add(new TableItem { id = 4, name = "Table 4", qr_code_url = "https://www.qrstuff.com/qr1", is_avalable = 0 });
+            //Ok
         }
 
         private void ModifyItem(TableItem item)
@@ -50,17 +51,15 @@ namespace LelkiBekeAdmin.ViewModels
         {
             TableItems.Remove(item);
         }
-        private void LoadTableItems()
+        private async void LoadTableItems()
         {
-            var Examples = new List<TableItem>()
+            var tableItems = await BackEndApi.GetTables<List<TableItem>>();
+            if (tableItems != null)
             {
-                new TableItem { id = 1, name = "Table 1", qr_code_url = "https://www.qrstuff.com/qr1", is_avalable = 1 },
-                new TableItem { id = 2, name = "Table 2", qr_code_url = "https://www.qrstuff.com/qr2", is_avalable = 1 },
-                new TableItem { id = 3, name = "Table 3", qr_code_url = "https://www.qrstuff.com/qr3", is_avalable = 1 },
-            };
-            foreach (var item in Examples)
-            {
-                TableItems.Add(item);
+                foreach (var item in tableItems)
+                {
+                    TableItems.Add(item);
+                }
             }
         }
     }

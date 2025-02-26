@@ -80,31 +80,31 @@
                                    HasShadow="True">
                             <StackLayout>
                                 <!-- Kép megjelenítése -->
-                                <Image Source="{Binding Image_url}"
+                                <Image Source="{Binding image_url}"
                                        Aspect="AspectFill"
                                        HeightRequest="150" 
                                        />
 
                                 <!-- Név -->
-                                <Label Text="{Binding Name}"
+                                <Label Text="{Binding name}"
                                    FontSize="20"
                                    FontAttributes="Bold"
                                    Margin="0,10,0,0"
                                    TextColor="{StaticResource Header}"/>
 
                                 <!-- Kategória -->
-                                <Label Text="{Binding Category_name}"
+                                <Label Text="{Binding category_name}"
                                    FontSize="14"
                                    TextColor="Gray" />
 
                                 <!-- Leírás -->
-                                <Label Text="{Binding Description}"
+                                <Label Text="{Binding description}"
                                    FontSize="14"
                                    LineBreakMode="TailTruncation" 
                                    TextColor="Black"/>
 
                                 <!-- Ár -->
-                                <Label Text="{Binding Price}"
+                                <Label Text="{Binding price}"
                                    FontSize="16"
                                    FontAttributes="Bold"
                                    TextColor="Green" />

@@ -65,7 +65,7 @@
 
                                     <!-- Table Name -->
                                     <Entry Grid.Row="0" Grid.Column="0"
-                                           Text="{Binding name, Mode=TwoWay}"
+                                           Text="{Binding table_number, Mode=TwoWay}"
                                            FontSize="{OnPlatform WinUI=20, Default=18}"
                                            FontAttributes="Bold"
                                            TextColor="{StaticResource Header}"/>
@@ -76,11 +76,15 @@
                                            FontSize="{OnPlatform WinUI=16, Default=14}"/>
 
                                     <!-- Table ID -->
-                                    <Entry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                                           Text="{Binding id, StringFormat='ID: {0}'}"
+                                    <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label Text="ID:" VerticalOptions="Center"/>
+                                        <Entry 
+                                           Text="{Binding id}"
                                            IsReadOnly="True"
                                            FontSize="14"
                                            TextColor="Gray"/>
+                                    </HorizontalStackLayout>
+                                    
 
                                     <!-- Availability Toggle -->
                                     <Label Grid.Row="3" Grid.Column="0"

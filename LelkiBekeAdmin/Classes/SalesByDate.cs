@@ -8,5 +8,7 @@ namespace LelkiBekeAdmin.Classes
 {
     public class SalesByDate
     {
+        public string sale_date { get; set; }
+        public string total_sales { get; set; }
     }
 }

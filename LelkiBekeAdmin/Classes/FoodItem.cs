@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace LelkiBekeAdmin.Classes
 {
     public class FoodItem
     {
-        public int Id { get; set; }
-        public string Category_name { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Price { get; set; }
-        public string Image_url { get; set; }
+        [JsonPropertyOrder(1)]
+        public int id { get; set; }
+
+        [JsonPropertyOrder(2)]
+        public string category_name { get; set; }
+
+        [JsonPropertyOrder(3)]
+        public string name { get; set; }
+
+        [JsonPropertyOrder(4)]
+        public string description { get; set; }
+
+        [JsonPropertyOrder(5)]
+        public string price { get; set; }
+
+        [JsonPropertyOrder(6)]
+        public string image_url { get; set; }
     }
 }

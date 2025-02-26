@@ -33,7 +33,7 @@
            Grid.Row="3" Margin="5">
             <Entry Placeholder="Category Name" IsPassword="False" 
                TextColor="Black" 
-               Text="{Binding SelectedItem.Category_name, Mode=TwoWay}"
+               Text="{Binding SelectedItem.category_name, Mode=TwoWay}"
                Margin="{OnPlatform Android=5, WinUI=0}"
                VerticalOptions="FillAndExpand"
                VerticalTextAlignment="Center"
@@ -47,7 +47,7 @@
             <Entry Placeholder="Name" IsPassword="False" 
                TextColor="Black" 
                Margin="{OnPlatform Android=5, WinUI=0}"
-                   Text="{Binding SelectedItem.Name, Mode=TwoWay}"
+                   Text="{Binding SelectedItem.name, Mode=TwoWay}"
                VerticalOptions="FillAndExpand"
                VerticalTextAlignment="Center"
                HeightRequest="{OnPlatform Android=50, WinUI=60}" />
@@ -57,7 +57,7 @@
            HeightRequest="{OnPlatform Android=100, WinUI=100}" 
            Padding="0" VerticalOptions="Center"
            Grid.Row="3" Margin="5">
-            <Editor Placeholder="Description" Text="{Binding SelectedItem.Description, Mode=TwoWay}" 
+            <Editor Placeholder="Description" Text="{Binding SelectedItem.description, Mode=TwoWay}" 
                TextColor="Black" 
                Margin="{OnPlatform Android=5, WinUI=0}"
                VerticalOptions="FillAndExpand"
@@ -69,7 +69,7 @@
            HeightRequest="{OnPlatform Android=50, WinUI=60}" 
            Padding="0" VerticalOptions="Center"
            Grid.Row="3" Margin="5">
-            <Entry Placeholder="Price" Text="{Binding SelectedItem.Price, Mode=TwoWay}" IsPassword="False" 
+            <Entry Placeholder="Price" Text="{Binding SelectedItem.price, Mode=TwoWay}" IsPassword="False" 
                TextColor="Black" 
                Margin="{OnPlatform Android=5, WinUI=0}"
                VerticalOptions="FillAndExpand"
@@ -83,7 +83,8 @@
                     CornerRadius="25" 
                     HeightRequest="50"
                     Margin="10"
-                    WidthRequest="150"/>
+                    WidthRequest="150"
+                    Command="{Binding SaveItemCommand}"/>
 
 
             <Button Text="CANCEL" 

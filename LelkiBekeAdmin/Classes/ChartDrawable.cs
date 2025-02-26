@@ -25,11 +25,11 @@ namespace LelkiBekeAdmin.Classes
                 return;
             float chartWidth = dirtyRect.Width - (Padding * 2);
             float chartHeight = dirtyRect.Height - (Padding * 2);
-            float maxValue = _salesData.Max(s => s.Value);
+            float maxValue = _salesData.Max(s => float.Parse(s.TotalSales));
             float scaleFactor = chartHeight / maxValue;
             float barWidth = (chartWidth / _salesData.Count) - BarSpacing;
-            float xAxisY = dirtyRect.Height - Padding; 
-            float yAxisX = Padding;                    
+            float xAxisY = dirtyRect.Height - Padding;
+            float yAxisX = Padding;
             canvas.StrokeColor = Colors.Black;
             canvas.StrokeSize = 2;
             canvas.DrawLine(yAxisX, xAxisY, dirtyRect.Width - Padding, xAxisY);
@@ -43,7 +43,7 @@ namespace LelkiBekeAdmin.Classes
                 float currentValue = i * (maxValue / NumberOfTicks);
                 float tickY = xAxisY - (currentValue * scaleFactor);
                 canvas.DrawLine(yAxisX, tickY, dirtyRect.Width - Padding, tickY);
-                canvas.FontColor = Colors.Black; 
+                canvas.FontColor = Colors.Black;
                 canvas.DrawString(
                     currentValue.ToString("0"),
                     x: yAxisX - 5,
@@ -55,15 +55,15 @@ namespace LelkiBekeAdmin.Classes
             canvas.FontSize = 14;
             foreach (var stat in _salesData)
             {
-                float barHeight = stat.Value * scaleFactor;
+                float barHeight = float.Parse(stat.TotalSales) * scaleFactor;
                 float yPosition = xAxisY - barHeight;
                 canvas.FillColor = Colors.LimeGreen;
                 canvas.FillRectangle(xPosition, yPosition, barWidth, barHeight);
                 canvas.FontColor = Colors.Black;
-                string categoryLabel = stat.Category;
+                string categoryLabel = stat.SaleDate.ToString("MMM");
                 if (_salesData.Count > 7)
                 {
-                    categoryLabel = stat.Category.Substring(0, 1);
+                    categoryLabel = stat.SaleDate.ToString("MMM").Substring(0, 1);
                 }
                 canvas.DrawString(
                     categoryLabel,

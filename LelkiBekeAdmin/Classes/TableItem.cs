@@ -9,10 +9,8 @@ namespace LelkiBekeAdmin.Classes
     public class TableItem
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public string table_number { get; set; }
         public string qr_code_url { get; set; }
-        public int is_avalable { get; set; }
-        public bool is_available => is_avalable == 1;
-        public string color => is_avalable == 1 ? "#7CB342" : "LightRed";
+        public int is_available { get; set; }
     }
 }

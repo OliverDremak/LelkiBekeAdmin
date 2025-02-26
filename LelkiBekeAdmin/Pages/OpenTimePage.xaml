@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LelkiBekeAdmin.Pages.OpenTimePage">
+             x:Class="LelkiBekeAdmin.Pages.OpenTimePage"
+             >
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout Padding="20" Spacing="15">
@@ -11,16 +12,16 @@
                 <CollectionView ItemsSource="{Binding OpeningHours}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Padding="10" Margin="5" BackgroundColor="White" CornerRadius="10">
+                            <Frame Padding="10" Margin="5" BackgroundColor="Black" CornerRadius="10">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding day_of_week}" FontSize="18" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DayOfWeek}" FontSize="18" FontAttributes="Bold"/>
                                     <HorizontalStackLayout>
                                         <Label Text="Closed:" VerticalOptions="Center"/>
-                                        <CheckBox IsChecked="{Binding is_closed, Converter={StaticResource IntToBoolConverter}}"/>
+                                        <CheckBox IsChecked="{Binding IsClosedBool}"/>
                                     </HorizontalStackLayout>
-                                     <HorizontalStackLayout>
+                                    <HorizontalStackLayout>
                                         <TimePicker Time="{Binding OpenTimeSpan}"/>
-                                        <Label Text=" - " VerticalOptions="{OnPlatform Android=Center}"/>
+                                        <Label Text=" - " VerticalOptions="Center"/>
                                         <TimePicker Time="{Binding CloseTimeSpan}"/>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
