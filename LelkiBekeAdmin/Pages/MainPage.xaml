@@ -38,6 +38,7 @@
            Padding="0" VerticalOptions="Center"
            Grid.Row="3" Margin="5">
             <Entry Placeholder="Email" IsPassword="False" 
+                   Text="{Binding email}"
                TextColor="Black" 
                Margin="{OnPlatform Android=5, WinUI=0}"
                VerticalOptions="FillAndExpand"
@@ -51,6 +52,7 @@
            Grid.Row="4" Margin="5">
             <Entry Placeholder="Password" IsPassword="True"
                TextColor="Black" 
+                   Text="{Binding password}"
                Margin="{OnPlatform Android=5, WinUI=0}" 
                VerticalOptions="FillAndExpand"
                VerticalTextAlignment="Center"

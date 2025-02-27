@@ -24,6 +24,8 @@ namespace LelkiBekeAdmin.API
         public static Task<T?> GetContactMessages<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/contact-messages");
         //public static Task<T?> RegisterUser<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/register", data);
 
+        public static Task<Tres?> Login<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/login", data);
+        public static Task<Tres?> Register<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/register", data);
 
     }
 }
