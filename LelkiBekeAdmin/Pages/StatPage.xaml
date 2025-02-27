@@ -3,81 +3,147 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LelkiBekeAdmin.Pages.StatPage">
     <ScrollView>
-        <Grid Padding="20"
-          RowSpacing="10"
-          ColumnSpacing="10"
-          VerticalOptions="FillAndExpand"
-          HorizontalOptions="FillAndExpand">
+        <Grid Padding="{OnPlatform Android='20', WinUI='40'}"
+              RowSpacing="{OnPlatform Android='10', WinUI='20'}"
+              ColumnSpacing="{OnPlatform Android='10', WinUI='20'}"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="{OnPlatform Android='Auto', WinUI='*'}"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="{OnPlatform Android='*', WinUI='1*'}"/>
+                <ColumnDefinition Width="{OnPlatform Android='*', WinUI='2*'}"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Title -->
-            <Label Text="Menu Items Sales"
-               FontAttributes="Bold"
-               FontSize="Large"
-               Grid.Row="{OnPlatform Android=0, WinUI=2}"
-               Grid.Column="0"
-               Grid.ColumnSpan="2"/>
-
-            <!-- Menu Items List -->
-            <CollectionView ItemsSource="{Binding MenuItems}"
-                        Grid.Row="{OnPlatform Android=1, WinUI=3}"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="{OnPlatform Android=2}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="{Binding menu_item}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding total_sold}" FontSize="Medium" HorizontalOptions="End"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Frame HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   Grid.Row="{OnPlatform Android=4, WinUI=0}"
-                   Grid.RowSpan="{OnPlatform WinUI=3}"
-                   Grid.Column="{OnPlatform Android=0, WinUI=1}"
-                   Grid.ColumnSpan="{OnPlatform Android=2}"
-                   Background="White"
-                   Margin="10">
-                <GraphicsView x:Name="chartGraphicsView"
-                              HeightRequest="380"
-                              WidthRequest="380">
-                            </GraphicsView>
+            <!-- Page Header -->
+            <Frame Grid.Row="0" Grid.ColumnSpan="2" 
+                   BackgroundColor="{AppThemeBinding Light='#f0f0f0', Dark='#333333'}"
+                   Padding="15" Margin="0,0,0,10"
+                   HasShadow="True" CornerRadius="10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Menu Items Sales Statistics" 
+                           FontAttributes="Bold" 
+                           FontSize="Large"
+                           HorizontalOptions="Center"/>
+                    <Label Text="{Binding ReportPeriod}" 
+                           FontSize="Small"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
             </Frame>
-            <!-- Chart -->
-
-
-            <!-- Summary Label -->
-            <Label Text="Summary"
-               FontAttributes="Bold"
-               FontSize="Large"
-               Grid.Row="{OnPlatform Android=2, WinUI=0}"
-               Grid.Column="0"
-               Grid.ColumnSpan="2"/>
 
             <!-- Summary Data -->
-            <Frame Padding="10"
-                   CornerRadius="8"
-                   Grid.Row="{OnPlatform Android=3, WinUI=1}"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="{OnPlatform Android=2}"
-                   HorizontalOptions="FillAndExpand">
-                <StackLayout>
-                    <Label Text="{Binding SummaryData.TotalRevenue}" FontSize="Medium"/>
-                </StackLayout>
+            <Frame Grid.Row="1" 
+                   Grid.Column="{OnPlatform Android='0', WinUI='0'}"
+                   Grid.ColumnSpan="{OnPlatform Android='2', WinUI='1'}"
+                   Padding="15" Margin="0,0,0,10"
+                   BackgroundColor="{AppThemeBinding Light='White', Dark='#222222'}"
+                   HasShadow="True" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Summary" 
+                           FontAttributes="Bold" 
+                           FontSize="Medium"
+                           HorizontalOptions="Center"/>
+                    <Grid ColumnSpacing="10" RowSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Total Revenue:" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="{Binding SummaryData.TotalRevenue}" 
+                               Grid.Row="0" Grid.Column="1" 
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Items Sold:" Grid.Row="1" Grid.Column="0"/>
+                        <Label Text="{Binding SummaryData.TotalOrders}" 
+                               Grid.Row="1" Grid.Column="1"
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Unique Customers:" Grid.Row="2" Grid.Column="0"/>
+                        <Label Text="{Binding SummaryData.AverageOrderValue}" 
+                               Grid.Row="2" Grid.Column="1"
+                               FontAttributes="Bold"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Menu Items List -->
+            <Frame Grid.Row="{OnPlatform Android='2', WinUI='2'}"
+                   Grid.Column="{OnPlatform Android='0', WinUI='0'}"
+                   Grid.ColumnSpan="{OnPlatform Android='2', WinUI='1'}"
+                   Grid.RowSpan="{OnPlatform Android='1', WinUI='2'}"
+                   BackgroundColor="{AppThemeBinding Light='White', Dark='#222222'}"
+                   Padding="15" Margin="0,0,0,10"
+                   HasShadow="True" CornerRadius="10">
+                <VerticalStackLayout>
+                    <Label Text="Menu Items" 
+                           FontAttributes="Bold" 
+                           FontSize="Medium" 
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10"/>
+                    <CollectionView ItemsSource="{Binding MenuItems}"
+                                    HeightRequest="{OnPlatform Android='200', WinUI='500'}"
+                                    EmptyView="No sales data available">
+                        <CollectionView.Header>
+                            <Grid Padding="5" ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Item Name" FontAttributes="Bold" Grid.Column="0"/>
+                                <Label Text="Qty Sold" FontAttributes="Bold" Grid.Column="1"/>
+                                <Label Text="Revenue" FontAttributes="Bold" Grid.Column="2"/>
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="5" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding menu_item}" Grid.Column="0" VerticalOptions="Center"/>
+                                    <Label Text="{Binding total_sold}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"/>
+                                    <Label Text="{Binding revenue, StringFormat='{0:C}'}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Chart -->
+            <Frame Grid.Row="{OnPlatform Android='3', WinUI='2'}"
+                   Grid.Column="{OnPlatform Android='0', WinUI='1'}"
+                   Grid.ColumnSpan="{OnPlatform Android='2', WinUI='1'}"
+                   BackgroundColor="{AppThemeBinding Light='White', Dark='#222222'}"
+                   Padding="15" Margin="0,0,0,10"
+                   HasShadow="True" CornerRadius="10">
+                <VerticalStackLayout>
+                    <Label Text="Sales Distribution" 
+                           FontAttributes="Bold" 
+                           FontSize="Medium" 
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10"/>
+                    <GraphicsView x:Name="chartGraphicsView"
+                                  HeightRequest="{OnPlatform Android='300', WinUI='500'}"
+                                  WidthRequest="{OnPlatform Android='300', WinUI='500'}"
+                                  HorizontalOptions="Center"/>
+                </VerticalStackLayout>
             </Frame>
         </Grid>
     </ScrollView>

@@ -18,6 +18,7 @@
     <ShellContent ContentTemplate="{DataTemplate local:Pages.MainPage}" Route="MainPage" />
     <ShellContent ContentTemplate="{DataTemplate local:Pages.RegisterPage}" Route="RegisterPage" />
     <ShellContent ContentTemplate="{DataTemplate local:Pages.ModifyMenuPage}" Route="ModifyMenuPage" />
+    <ShellContent ContentTemplate="{DataTemplate local:Pages.QRcodePage}" Route="QRcodePage" />
     <TabBar>
         <!--<Tab Title="Main" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.MainPage}" />
@@ -40,9 +41,9 @@
         <!--<Tab Title="Register" Icon="{x:StaticResource userIcon}">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.RegisterPage}" />
         </Tab>-->
-        <Tab Title="QR" Icon="{x:StaticResource userIcon}">
-            <ShellContent ContentTemplate="{DataTemplate local:Pages.QRcodePage}" Route="QRcodePage" />
-        </Tab>
+        <!--<Tab Title="QR" Icon="{x:StaticResource userIcon}">
+
+        </Tab>-->
         <!--<Tab Title="Modify">
             <ShellContent ContentTemplate="{DataTemplate local:Pages.ModifyMenuPage}" Route="ModifyMenuPage" />
         </Tab>-->
