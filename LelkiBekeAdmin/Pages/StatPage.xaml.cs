@@ -12,7 +12,7 @@ public partial class StatPage : ContentPage
         BindingContext = viewModel;
 
         // Bind the ChartDrawable from the view model
-        chartGraphicsView.Drawable = viewModel.ChartDrawable;
+        //chartGraphicsView.Drawable = viewModel.ChartDrawable;
 
     }
 }

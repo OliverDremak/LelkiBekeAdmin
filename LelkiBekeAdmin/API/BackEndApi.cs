@@ -23,6 +23,8 @@ namespace LelkiBekeAdmin.API
         //public static Task<T?> SetOpenHours<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/update-opening-hours", data);
         public static Task<T?> GetContactMessages<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/contact-messages");
         //public static Task<T?> RegisterUser<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/register", data);
+
+
     }
 }
 
