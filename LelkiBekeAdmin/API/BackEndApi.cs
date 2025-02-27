@@ -9,7 +9,7 @@ namespace LelkiBekeAdmin.API
 {
     public static class BackEndApi
     {
-        private const string BaseUrl = "https://bgs.jedlik.eu/innerpeace/backend/api";
+        private const string BaseUrl = "https://api.innerpeace.jedlik.cloud/api";
 
         public static Task<T?> GetMenu<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/menu");
         public static Task<T?> GetTables<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/tables");
