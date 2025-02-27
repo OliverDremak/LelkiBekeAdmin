@@ -5,94 +5,107 @@
              >
     <ScrollView>
         <Grid Padding="20" VerticalOptions="Center" HorizontalOptions="{OnPlatform WinUI=Center}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{OnPlatform  WinUI=500}"/>
-        </Grid.ColumnDefinitions>
-        <Image Source="dotnet_bot.png" HeightRequest="100" HorizontalOptions="Center"  Grid.Row="0"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{OnPlatform WinUI=500}"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="dotnet_bot.png" HeightRequest="100" HorizontalOptions="Center" Grid.Row="0"/>
 
-        <Label Text="Create a waiter Account" 
-           FontSize="24" 
-           FontAttributes="Bold" 
-           HorizontalOptions="Center" 
-           TextColor="{StaticResource Header}"
-           Grid.Row="1"/>
+            <Label Text="Create a waiter Account" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="{StaticResource Header}"
+                   Grid.Row="1"/>
 
-        <Frame BackgroundColor="White" CornerRadius="30" 
-               HeightRequest="{OnPlatform Android=50, WinUI=60}" 
-               Padding="0" VerticalOptions="Center"
-               Grid.Row="2" Margin="5">
-            <Entry Placeholder="Name" IsPassword="True"
-                   TextColor="Black" 
-                   Margin="{OnPlatform Android=5, WinUI=0}" 
-                   VerticalOptions="FillAndExpand"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="{OnPlatform Android=50, WinUI=60}" />
-        </Frame>
-        <Frame BackgroundColor="White" CornerRadius="30" 
-               HeightRequest="{OnPlatform Android=50, WinUI=60}" 
-               Padding="0" VerticalOptions="Center"
-               Grid.Row="3" Margin="5">
-            <Entry Placeholder="Email" IsPassword="True"
-                   TextColor="Black" 
-                   Margin="{OnPlatform Android=5, WinUI=0}" 
-                   VerticalOptions="FillAndExpand"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="{OnPlatform Android=50, WinUI=60}" />
-        </Frame>
-        <Frame BackgroundColor="White" CornerRadius="30" 
-               HeightRequest="{OnPlatform Android=50, WinUI=60}" 
-               Padding="0" VerticalOptions="Center"
-               Grid.Row="4" Margin="5">
-            <Entry Placeholder="Password" IsPassword="True"
-                   TextColor="Black" 
-                   Margin="{OnPlatform Android=5, WinUI=0}" 
-                   VerticalOptions="FillAndExpand"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="{OnPlatform Android=50, WinUI=60}" />
-        </Frame>
-        <Frame BackgroundColor="White" CornerRadius="30" 
-               HeightRequest="{OnPlatform Android=50, WinUI=60}" 
-               Padding="0" VerticalOptions="Center"
-               Grid.Row="5" Margin="5">
-            <Entry Placeholder="Comfirm Password" IsPassword="True"
-                   TextColor="Black" 
-                   Margin="{OnPlatform Android=5, WinUI=0}" 
-                   VerticalOptions="FillAndExpand"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="{OnPlatform Android=50, WinUI=60}" />
-        </Frame>
-        <Frame BackgroundColor="White" CornerRadius="30" 
-               HeightRequest="{OnPlatform Android=50, WinUI=60}" 
-               Padding="0" VerticalOptions="Center"
-               Grid.Row="6" Margin="5">
-            <Entry Placeholder="Role" IsPassword="True"
-                   TextColor="Black" 
-                   IsEnabled="False"
-                   Margin="{OnPlatform Android=5, WinUI=0}" 
-                   VerticalOptions="FillAndExpand"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="{OnPlatform Android=50, WinUI=60}" />
-        </Frame>
-        <Button Text="Add Waiter" 
-                BackgroundColor="{StaticResource ButtonDef}" 
-                TextColor="White" 
-                CornerRadius="25" 
-                HeightRequest="50"
-                Command="{Binding NavigateToMenuCommand}"
-                Margin="10"
-                Grid.Row="7"/>
-    </Grid>
+            <Frame BackgroundColor="White" CornerRadius="30" 
+                   HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+                   Padding="0" VerticalOptions="Center"
+                   Grid.Row="2" Margin="5">
+                <Entry Placeholder="Name" 
+                       Text="{Binding Name}"
+                       TextColor="Black" 
+                       Margin="{OnPlatform Android=5, WinUI=0}" 
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="{OnPlatform Android=50, WinUI=60}" />
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="30" 
+                   HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+                   Padding="0" VerticalOptions="Center"
+                   Grid.Row="3" Margin="5">
+                <Entry Placeholder="Email" 
+                       Text="{Binding Email}"
+                       TextColor="Black" 
+                       Margin="{OnPlatform Android=5, WinUI=0}" 
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="{OnPlatform Android=50, WinUI=60}" />
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="30" 
+                   HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+                   Padding="0" VerticalOptions="Center"
+                   Grid.Row="4" Margin="5">
+                <Entry Placeholder="Password" 
+                       Text="{Binding Password}"
+                       IsPassword="True"
+                       TextColor="Black" 
+                       Margin="{OnPlatform Android=5, WinUI=0}" 
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="{OnPlatform Android=50, WinUI=60}" />
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="30" 
+                   HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+                   Padding="0" VerticalOptions="Center"
+                   Grid.Row="5" Margin="5">
+                <Entry Placeholder="Confirm Password" 
+                       Text="{Binding ConfirmPassword}"
+                       IsPassword="True"
+                       TextColor="Black" 
+                       Margin="{OnPlatform Android=5, WinUI=0}" 
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="{OnPlatform Android=50, WinUI=60}" />
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="30" 
+                   HeightRequest="{OnPlatform Android=50, WinUI=60}" 
+                   Padding="0" VerticalOptions="Center"
+                   Grid.Row="6" Margin="5">
+                <Picker Title="Role"
+                        SelectedItem="{Binding Role}"
+                        TextColor="Black"
+                        Margin="{OnPlatform Android=5, WinUI=0}"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Center"
+                        HeightRequest="{OnPlatform Android=50, WinUI=60}"
+                        Grid.Row="6">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>waiter</x:String>
+                            <x:String>kitchen</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
+            <Button Text="Add Waiter" 
+                    BackgroundColor="{StaticResource ButtonDef}" 
+                    TextColor="White" 
+                    CornerRadius="25" 
+                    HeightRequest="50"
+                    Command="{Binding AddWaiterCommand}"
+                    Margin="10"
+                    Grid.Row="7"/>
+        </Grid>
     </ScrollView>
-    
 </ContentPage>

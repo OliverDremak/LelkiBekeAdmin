@@ -25,7 +25,11 @@ namespace LelkiBekeAdmin.ViewModels
             var result = await BackEndApi.GetContactMessages<List<ContactMessage>>();
             if (result != null)
             {
-                ContactMessages = new ObservableCollection<ContactMessage>(result);
+                ContactMessages.Clear();
+                foreach (var message in result)
+                {
+                    ContactMessages.Add(message); 
+                }
             }
         }
     }
