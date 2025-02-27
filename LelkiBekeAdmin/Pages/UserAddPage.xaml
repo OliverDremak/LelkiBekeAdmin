@@ -70,7 +70,7 @@
                    Padding="0" VerticalOptions="Center"
                    Grid.Row="5" Margin="5">
                 <Entry Placeholder="Confirm Password" 
-                       Text="{Binding ConfirmPassword}"
+                       Text="{Binding ComfirmPassword}"
                        IsPassword="True"
                        TextColor="Black" 
                        Margin="{OnPlatform Android=5, WinUI=0}" 

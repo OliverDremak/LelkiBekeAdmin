@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LelkiBekeAdmin.Classes
+namespace LelkiBekeAdmin.Models
 {
-    public class User
+    public class RegUser
     {
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public string role { get; set; }
     }
+
 }

@@ -37,6 +37,7 @@
                Padding="0" VerticalOptions="Center"
                Grid.Row="2" Margin="5">
             <Entry Placeholder="Full Name" IsPassword="False" 
+                   Text="{Binding Name}"
                    TextColor="Black" 
                    Margin="{OnPlatform Android=5, WinUI=0}"
                    VerticalOptions="FillAndExpand"
@@ -50,11 +51,12 @@
            Padding="0" VerticalOptions="Center"
            Grid.Row="3" Margin="5">
             <Entry Placeholder="Email" IsPassword="False" 
-               TextColor="Black" 
-               Margin="{OnPlatform Android=5, WinUI=0}"
-               VerticalOptions="FillAndExpand"
-               VerticalTextAlignment="Center"
-               HeightRequest="{OnPlatform Android=50, WinUI=60}" />
+                   Text="{Binding Email}"
+                   TextColor="Black" 
+                   Margin="{OnPlatform Android=5, WinUI=0}"
+                   VerticalOptions="FillAndExpand"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="{OnPlatform Android=50, WinUI=60}" />
         </Frame>
 
         <!-- Password Entry -->
@@ -63,6 +65,7 @@
                Padding="0" VerticalOptions="Center"
                Grid.Row="4" Margin="5">
             <Entry Placeholder="Password" IsPassword="False" 
+                   Text="{Binding Password}"
                    TextColor="Black" 
                    Margin="{OnPlatform Android=5, WinUI=0}"
                    VerticalOptions="FillAndExpand"
@@ -76,6 +79,7 @@
                Padding="0" VerticalOptions="Center"
                Grid.Row="5" Margin="5">
             <Entry Placeholder="Confirm Password" IsPassword="False" 
+                   Text="{Binding ComfirmPassword}"
                    TextColor="Black" 
                    Margin="{OnPlatform Android=5, WinUI=0}"
                    VerticalOptions="FillAndExpand"
