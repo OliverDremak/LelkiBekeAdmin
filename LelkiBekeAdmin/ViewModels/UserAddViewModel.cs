@@ -40,31 +40,7 @@ namespace LelkiBekeAdmin.ViewModels
 
         private async Task AddWaiterAsync()
         {
-            if (Password != ConfirmPassword)
-            {
-                // Handle password mismatch
-                return;
-            }
 
-            var user = new
-            {
-                name = Name,
-                email = Email,
-                password = Password,
-                role = Role
-            };
-
-            var result = await BackEndApi.RegisterUser(user);
-
-            if (result != null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Success", "User registered successfully", "OK");
-                ClearEntries();
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "User registration failed", "OK");
-            }
         }       
 
         private void ClearEntries()

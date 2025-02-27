@@ -30,7 +30,7 @@
                            FontAttributes="Bold" 
                            FontSize="Large"
                            HorizontalOptions="Center"/>
-                    <Label Text="{Binding ReportPeriod}" 
+                    <Label Text="Time:" 
                            FontSize="Small"
                            HorizontalOptions="Center"/>
                 </VerticalStackLayout>

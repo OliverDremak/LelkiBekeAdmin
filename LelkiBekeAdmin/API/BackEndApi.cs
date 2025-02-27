@@ -13,16 +13,16 @@ namespace LelkiBekeAdmin.API
 
         public static Task<T?> GetMenu<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/menu");
         public static Task<T?> GetTables<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/tables");
-        public static Task<T?> CreateNewMenuItem<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/newMenuItem", data);
-        public static Task<T?> ModifyMenuItemById<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/modifyMenuItem", data);
-        public static Task<T?> DeleteMenuItemById<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/deleteMenuItem", data);
+        //public static Task<T?> CreateNewMenuItem<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/newMenuItem", data);
+        //public static Task<T?> ModifyMenuItemById<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/modifyMenuItem", data);
+        //public static Task<T?> DeleteMenuItemById<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/deleteMenuItem", data);
         public static Task<T?> GetDailySales<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/salesDaily");
         public static Task<T?> GetTopSellingItems<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/salesTop-items");
         public static Task<T?> GetSalesSummary<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/salesSummary");
         public static Task<T?> GetOpenHours<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/opening-hours");
-        public static Task<T?> SetOpenHours<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/update-opening-hours", data);
+        //public static Task<T?> SetOpenHours<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/update-opening-hours", data);
         public static Task<T?> GetContactMessages<T>() where T : class => HTTPCommunication<T>.Get($"{BaseUrl}/contact-messages");
-        public static Task<T?> RegisterUser<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/register", data);
+        //public static Task<T?> RegisterUser<T>(T data) where T : class => HTTPCommunication<T>.Post($"{BaseUrl}/register", data);
     }
 }
 

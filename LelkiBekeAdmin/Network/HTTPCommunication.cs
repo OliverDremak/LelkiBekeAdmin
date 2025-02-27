@@ -30,28 +30,6 @@ namespace LelkiBekeAdmin.Network
                 Console.WriteLine($"Exception: {ex.Message}");
                 throw;
             }
-
-        }
-        public static async Task<T?> Post(string url, T data)
-        {
-            using var client = new HttpClient();
-            var SD = JsonSerializer.Serialize(data);
-            var request = new HttpRequestMessage(HttpMethod.Post, url)
-            {
-                Content = JsonContent.Create(data)
-                
-            };
-            request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-
-            using var response = await client.SendAsync(request).ConfigureAwait(false);
-            if (response.IsSuccessStatusCode)
-            {
-                string resultStr = await response.Content.ReadAsStringAsync();
-                T? result = JsonSerializer.Deserialize<T>(resultStr);
-                return result;
-            }
-            return null;
         }
     }
 }

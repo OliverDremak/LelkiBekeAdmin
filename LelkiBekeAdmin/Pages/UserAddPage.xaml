@@ -82,7 +82,7 @@
                    HeightRequest="{OnPlatform Android=50, WinUI=60}" 
                    Padding="0" VerticalOptions="Center"
                    Grid.Row="6" Margin="5">
-                <Picker Title="Role"
+                <Picker
                         SelectedItem="{Binding Role}"
                         TextColor="Black"
                         Margin="{OnPlatform Android=5, WinUI=0}"

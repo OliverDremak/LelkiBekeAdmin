@@ -62,33 +62,7 @@ namespace LelkiBekeAdmin.ViewModels
 
         private async Task SaveItem()
         {
-            if (SelectedItem != null)
-            {
-                try
-                {
-                    var result = await BackEndApi.ModifyMenuItemById(SelectedItem);
-                    if (result != null)
-                    {
-                        // Handle success (e.g., navigate back to the menu page)
-                        await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
-                    }
-                    else
-                    {
-                        // Handle failure (e.g., show an error message)
-                        await Application.Current.MainPage.DisplayAlert("Error", "Failed to save the menu item.", "OK");
-                    }
-                }
-                catch (HttpRequestException ex)
-                {
-                    // Handle HttpRequestException
-                    await Application.Current.MainPage.DisplayAlert("Network Error", $"An error occurred while sending the request: {ex.Message}", "OK");
-                }
-                catch (Exception ex)
-                {
-                    // Handle other exceptions
-                    await Application.Current.MainPage.DisplayAlert("Error", $"An unexpected error occurred: {ex.Message}", "OK");
-                }
-            }
+
         }
     }
 }

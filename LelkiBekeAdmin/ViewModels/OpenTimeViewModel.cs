@@ -24,11 +24,7 @@ namespace LelkiBekeAdmin.ViewModels
             LoadOpenHours();
             SaveItemCommand = new RelayCommand<OpenHours>(async item =>
             {
-                var result = await BackEndApi.SetOpenHours<OpenHours>(item);
-                if (result != null)
-                {
-                    LoadOpenHours();
-                }
+
             });
         }
 
