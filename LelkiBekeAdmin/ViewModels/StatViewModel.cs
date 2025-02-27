@@ -45,29 +45,17 @@ namespace LelkiBekeAdmin.ViewModels
 
         private async void LoadSalesData()
         {
-            var salesData = await BackEndApi.GetDailySales<List<StatModel>>();
-            if (salesData != null)
-            {
-                SalesData = new ObservableCollection<StatModel>(salesData);
-            }
+           
         }
 
         private async void LoadTopSellingItems()
         {
-            var topSellingItems = await BackEndApi.GetTopSellingItems<List<TotalSoldItem>>();
-            if (topSellingItems != null)
-            {
-                MenuItems = new ObservableCollection<TotalSoldItem>(topSellingItems);
-            }
+           
         }
 
         private async void LoadSalesSummary()
         {
-            var salesSummary = await BackEndApi.GetSalesSummary<List<Summary>>();
-            if (salesSummary != null)
-            {
-                SummaryData = salesSummary[0];
-            }
+           
         }
     }
 }
