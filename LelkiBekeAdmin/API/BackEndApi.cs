@@ -26,6 +26,9 @@ namespace LelkiBekeAdmin.API
 
         public static Task<Tres?> Login<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/login", data);
         public static Task<Tres?> Register<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/register", data);
+        public static Task<Tres?> CreateNewMenuItem<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/newMenuItem", data);
+        public static Task<Tres?> ModifyMenuItemById<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/modifyMenuItem", data);
+        public static Task<Tres?> DeleteMenuItemById<Treq, Tres>(Treq data) where Treq : class where Tres : class => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/deleteMenuItem", data);
 
     }
 }

@@ -13,7 +13,8 @@
                     CornerRadius="25" 
                     HeightRequest="50"
                     Margin="10"
-                    WidthRequest="150"/>
+                    WidthRequest="150"
+                    Command="{Binding SaveItemCommand}"/>
         </HorizontalStackLayout>
         <Button Text="Back" Command="{Binding NavigateToMenuCommand}" IsVisible="{OnPlatform WinUI=false, Default=true}" WidthRequest="80" HorizontalOptions="Start" Margin="10" CornerRadius="25"/>
 

@@ -15,21 +15,39 @@ namespace LelkiBekeAdmin.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        public string email { get; set; }
-        public string password { get; set; }
+        public string? email { get; set; } = string.Empty;
+        public string? password { get; set; } = string.Empty;
         public ICommand NavigateToMenuCommand { get; }
         public ICommand NavigateToRegisterCommand { get; }
 
+        public bool rememberMe { get; set; }
+
         public MainViewModel()
         {
-            NavigateToMenuCommand = new RelayCommand(async () =>
+            Task.Run(async () => await InitializeAsync());
+
+            NavigateToMenuCommand = new RelayCommand(() =>
             {
                 Login();
             });
+
             NavigateToRegisterCommand = new Command(async () =>
             {
                 await Shell.Current.GoToAsync($"//{nameof(RegisterPage)}");
             });
+        }
+
+        private async Task InitializeAsync()
+        {
+            if (await SecureStorage.GetAsync("rememberMe") == "true")
+            {
+                rememberMe = true;
+            }
+            if (rememberMe)
+            {
+                email = await SecureStorage.GetAsync("email") ?? string.Empty;
+                password = await SecureStorage.GetAsync("password") ?? string.Empty;
+            }
         }
 
         private async void Login()
@@ -43,7 +61,20 @@ namespace LelkiBekeAdmin.ViewModels
             if (response != null)
             {
                 if (response.message == "Sikeres bejelentkezés")
-                {                   
+                {
+                    if (rememberMe)
+                    {
+                        await SecureStorage.SetAsync("rememberMe", "true");
+                        await SecureStorage.SetAsync("email", email);
+                        await SecureStorage.SetAsync("password", password);
+                    }
+                    else
+                    {
+                        // Clear saved credentials
+                        SecureStorage.Remove("rememberMe");
+                        SecureStorage.Remove("email");
+                        SecureStorage.Remove("password");
+                    }
                     await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
                 }
                 else

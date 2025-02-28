@@ -10,12 +10,14 @@ using LelkiBekeAdmin.Pages;
 using System.Text.Json;
 using LelkiBekeAdmin.Classes;
 using LelkiBekeAdmin.API;
+using LelkiBekeAdmin.Models;
 
 namespace LelkiBekeAdmin.ViewModels
 {
     public partial class ModifyMenuViewModel : ObservableObject, IQueryAttributable
     {
         private FoodItem NotUpdated { get; set; }
+        private bool isNew { get; set; } = true;
         private FoodItem _selectedItem;
         public FoodItem SelectedItem
         {
@@ -52,6 +54,7 @@ namespace LelkiBekeAdmin.ViewModels
                     SelectedItem = JsonSerializer.Deserialize<FoodItem>(json);
                     Title = "Edit Menu Item";
                     NotUpdated = JsonSerializer.Deserialize<FoodItem>(json);
+                    isNew = false;
                 }
             }
             else
@@ -62,7 +65,40 @@ namespace LelkiBekeAdmin.ViewModels
 
         private async Task SaveItem()
         {
+            if (isNew)
+            {
+                NewMenuItem newItem = new NewMenuItem
+                {
+                    //name = SelectedItem.name,
+                    //price = SelectedItem.price,
+                    //category_id = SelectedItem.category_name,
+                    //description = SelectedItem.description,
+                    //image = SelectedItem.image
+                };
+                var result = await BackEndApi.CreateNewMenuItem<NewMenuItem, FoodItem>(newItem);
+                if (result != null)
+                {
+                    await Shell.Current.DisplayAlert(Shell.Current.CurrentPage.Title, "Item created successfully", "OK");
+                    await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
+                }
+            }
+            else
+            {
+                ModifyMenuItem modifyItem = new ModifyMenuItem
+                {
+                    //id = SelectedItem.id,
+                    //name = SelectedItem.name,
+                    //price = SelectedItem.price,
+                    //category_id = Selected
+                };
+                var result = await BackEndApi.ModifyMenuItemById<ModifyMenuItem, FoodItem>(modifyItem);
+                if (result != null)
+                {
+                    await Shell.Current.DisplayAlert(Shell.Current.CurrentPage.Title, "Item updated successfully", "OK");
+                    await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
+                }
 
+            }
         }
     }
 }
