@@ -37,7 +37,7 @@ namespace LelkiBekeAdmin.ViewModels
         {
             NavigateToMenuCommand = new RelayCommand(async () =>
             {
-                await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(MenuPage)}?refresh=true");
             });
 
             SaveItemCommand = new RelayCommand(async () => await SaveItem());
@@ -86,16 +86,22 @@ namespace LelkiBekeAdmin.ViewModels
             {
                 ModifyMenuItem modifyItem = new ModifyMenuItem
                 {
-                    //id = SelectedItem.id,
-                    //name = SelectedItem.name,
-                    //price = SelectedItem.price,
-                    //category_id = Selected
+                    id = SelectedItem.id,
+                    name = SelectedItem.name,
+                    description = SelectedItem.description,
+                    image_url = SelectedItem.image_url,
+                    price = int.Parse(SelectedItem.price),
+                    category_id = SelectedItem.category_id,
                 };
-                var result = await BackEndApi.ModifyMenuItemById<ModifyMenuItem, FoodItem>(modifyItem);
+                var result = await BackEndApi.ModifyMenuItemById<ModifyMenuItem, object>(modifyItem);
                 if (result != null)
                 {
                     await Shell.Current.DisplayAlert(Shell.Current.CurrentPage.Title, "Item updated successfully", "OK");
-                    await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(MenuPage)}?refresh=true");
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert(Shell.Current.CurrentPage.Title, "Item update failed", "OK");
                 }
 
             }

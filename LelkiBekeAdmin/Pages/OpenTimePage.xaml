@@ -25,7 +25,7 @@
                                 </HorizontalStackLayout>
                                 <Button Text="Save"
                                         Command="{Binding BindingContext.SaveItemCommand, 
-                                                 Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                                 Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
                                         CommandParameter="{Binding .}" 
                                         BackgroundColor="#007AFF" TextColor="White"/>
                             </VerticalStackLayout>

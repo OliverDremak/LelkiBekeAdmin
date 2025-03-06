@@ -43,6 +43,13 @@ namespace LelkiBekeAdmin.ViewModels
                 await Shell.Current.GoToAsync($"//{nameof(ModifyMenuPage)}?menuItem={Uri.EscapeDataString(json)}");
             });
         }
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.ContainsKey("refresh") && (bool)query["refresh"])
+            {
+                RefreshMenuItems();
+            }
+        }
 
         private async Task RemoveItem(FoodItem item)
         {
@@ -89,6 +96,11 @@ namespace LelkiBekeAdmin.ViewModels
                     Categories.Add(new Category { Name = category });
                 }
             }
+        }
+
+        private void RefreshMenuItems()
+        {
+            LoadMenuItems();
         }
     }
 }

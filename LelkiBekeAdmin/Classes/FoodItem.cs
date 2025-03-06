@@ -14,17 +14,19 @@ namespace LelkiBekeAdmin.Classes
 
         [JsonPropertyOrder(2)]
         public string category_name { get; set; }
-
         [JsonPropertyOrder(3)]
-        public string name { get; set; }
+        public int category_id { get; set; }
 
         [JsonPropertyOrder(4)]
-        public string description { get; set; }
+        public string name { get; set; }
 
         [JsonPropertyOrder(5)]
-        public string price { get; set; }
+        public string description { get; set; }
 
         [JsonPropertyOrder(6)]
+        public string price { get; set; }
+
+        [JsonPropertyOrder(7)]
         public string image_url { get; set; }
     }
 }

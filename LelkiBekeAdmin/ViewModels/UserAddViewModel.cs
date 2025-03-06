@@ -56,13 +56,13 @@ namespace LelkiBekeAdmin.ViewModels
                     name = Name,
                     email = Email,
                     password = Password,
-                    role = "admin"
+                    role = Role,
                 });
 
                 if (response != null)
                 {
                     await Shell.Current.DisplayAlert("Siker", "Sikeres regisztráció!", "OK");
-                    ClearEntries();
+
                 }
                 else
                 {
