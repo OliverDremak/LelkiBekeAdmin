@@ -24,7 +24,7 @@ namespace LelkiBekeAdmin.ViewModels
             LoadOpenHours();
             SaveItemCommand = new RelayCommand<OpenHours>(async item =>
             {
-
+                UpdateOpenHours(item);
             });
         }
 
@@ -34,6 +34,19 @@ namespace LelkiBekeAdmin.ViewModels
             if (result != null)
             {
                 OpeningHours = new ObservableCollection<OpenHours>(result);
+            }
+        }
+
+        private async void UpdateOpenHours(OpenHours data)
+        {
+            var result = await BackEndApi.UpdateOpenHours<OpenHours, object>(data);
+            if (result != null)
+            {
+                await Shell.Current.DisplayAlert("Successful","Updated.","Ok");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error","Something went wrong","ok");
             }
         }
     }

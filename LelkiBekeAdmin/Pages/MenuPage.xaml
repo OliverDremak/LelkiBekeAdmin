@@ -35,7 +35,7 @@
         </CollectionView>
         <!--Datatemplate : SwipeView to delete item or update + update page-->
 
-        <CollectionView Margin="{OnPlatform WinUI='100,0,100,0'}" ItemsSource="{Binding FilteredMenuItems}"  VerticalOptions="Fill" Grid.Row="1" Grid.RowSpan="2">
+        <CollectionView Margin="{OnPlatform WinUI='100,0,100,0'}" ItemsSource="{Binding FilteredMenuItems}" VerticalOptions="Fill" Grid.Row="1" Grid.RowSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
@@ -44,82 +44,102 @@
                                 <!-- Remove action -->
                                 <SwipeItemView Command="{Binding BindingContext.RemoveItemCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}">
                                     <Frame CornerRadius="10"
-                                               Padding="10"
-                                               BackgroundColor="Red"
-                                               HasShadow="True"
-                                               WidthRequest="100">
+                                   Padding="10"
+                                   BackgroundColor="Red"
+                                   HasShadow="True"
+                                   WidthRequest="100">
                                         <StackLayout Orientation="Horizontal" 
-                                                         HorizontalOptions="Center"
-                                                         VerticalOptions="Center">
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center">
                                             <Image Source="{x:StaticResource RemoveIcon}" 
-                                                       HeightRequest="40" 
-                                                       WidthRequest="40" />
+                                           HeightRequest="40" 
+                                           WidthRequest="40" />
                                         </StackLayout>
                                     </Frame>
                                 </SwipeItemView>
                                 <SwipeItemView Command="{Binding BindingContext.NavigateToModifyCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}">
                                     <Frame CornerRadius="10"
-                                               Padding="10"
-                                               BackgroundColor="{StaticResource ButtonHover}"
-                                               HasShadow="True"
-                                               WidthRequest="100">
+                                   Padding="10"
+                                   BackgroundColor="{StaticResource ButtonHover}"
+                                   HasShadow="True"
+                                   WidthRequest="100">
                                         <StackLayout Orientation="Horizontal" 
-                                                         HorizontalOptions="Center"
-                                                         VerticalOptions="Center">
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center">
                                             <Image Source="{x:StaticResource ModifyIcon}" 
-                                                       HeightRequest="40" 
-                                                       WidthRequest="40" />
+                                           HeightRequest="40" 
+                                           WidthRequest="40" />
                                         </StackLayout>
                                     </Frame>
                                 </SwipeItemView>
                             </SwipeItems>
                         </SwipeView.LeftItems>
                         <Frame Padding="10"
-                                   Margin="10"
-                                   CornerRadius="8"
-                                   HasShadow="True">
-                            <StackLayout>
-                                <!-- Kép megjelenítése -->
-                                <Image Source="{Binding image_url}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="150" 
-                                       />
+                       Margin="10"
+                       CornerRadius="8"
+                       HasShadow="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{OnPlatform WinUI=Auto, Default=*}" />
+                                    <ColumnDefinition Width="{OnPlatform WinUI=*, Default=0}" />
+                                </Grid.ColumnDefinitions>
 
-                                <!-- Név -->
-                                <Label Text="{Binding name}"
+                                <!-- Image -->
+                                <Image Grid.Row="{OnPlatform WinUI=0, Default=0}"
+                               Grid.Column="{OnPlatform WinUI=0, Default=0}"
+                               Grid.RowSpan="{OnPlatform WinUI=2, Default=1}"
+                               Source="{Binding image_url}"
+                               Aspect="{OnPlatform WinUI=AspectFit, Default=AspectFill}"
+                               HeightRequest="{OnPlatform WinUI=150, Default=150}"
+                               WidthRequest="{OnPlatform WinUI=200, Default=-1}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="{OnPlatform WinUI=Start, Default=Fill}" />
+
+                                <!-- Content on the right on Windows -->
+                                <StackLayout Grid.Row="{OnPlatform WinUI=0, Default=1}"
+                                     Grid.Column="{OnPlatform WinUI=1, Default=0}"
+                                     Margin="{OnPlatform WinUI=0, Default='0,10,0,0'}">
+                                    <!-- Név -->
+                                    <Label Text="{Binding name}"
                                    FontSize="20"
                                    FontAttributes="Bold"
-                                   Margin="0,10,0,0"
+                                   Margin="0,5,0,0"
                                    TextColor="{StaticResource Header}"/>
 
-                                <!-- Kategória -->
-                                <Label Text="{Binding category_name}"
+                                    <!-- Kategória -->
+                                    <Label Text="{Binding category_name}"
                                    FontSize="14"
                                    TextColor="Gray" />
 
-                                <!-- Leírás -->
-                                <Label Text="{Binding description}"
+                                    <!-- Leírás -->
+                                    <Label Text="{Binding description}"
                                    FontSize="14"
                                    LineBreakMode="TailTruncation" 
                                    TextColor="Black"/>
 
-                                <!-- Ár -->
-                                <Label Text="{Binding price}"
+                                    <!-- Ár -->
+                                    <Label Text="{Binding price}"
                                    FontSize="16"
                                    FontAttributes="Bold"
                                    TextColor="Green" />
-                                <StackLayout Orientation="Horizontal" IsVisible="{OnPlatform WinUI=True, Default=False}">
-                                    <Button Text="Edit" BackgroundColor="Blue" TextColor="White"
-                                            Command="{Binding BindingContext.NavigateToModifyCommand, 
-                                                     Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
-                                            CommandParameter="{Binding .}" />
 
-                                    <Button Text="Delete" BackgroundColor="Red" TextColor="White"
-                                            Command="{Binding BindingContext.RemoveItemCommand, 
-                                                     Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
-                                            CommandParameter="{Binding .}" />
+                                    <StackLayout Orientation="Horizontal" IsVisible="{OnPlatform WinUI=True, Default=False}">
+                                        <Button Text="Edit" BackgroundColor="Blue" TextColor="White"
+                                        Command="{Binding BindingContext.NavigateToModifyCommand, 
+                                                 Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
+                                        CommandParameter="{Binding .}" />
+
+                                        <Button Text="Delete" BackgroundColor="Red" TextColor="White"
+                                        Command="{Binding BindingContext.RemoveItemCommand, 
+                                                 Source={RelativeSource AncestorType={x:Type CollectionView}}}" 
+                                        CommandParameter="{Binding .}" />
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
+                            </Grid>
                         </Frame>
                     </SwipeView>
                 </DataTemplate>

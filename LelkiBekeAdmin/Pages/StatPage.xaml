@@ -57,7 +57,7 @@
                                     <Label Text="Avg Value" 
                                            FontSize="14" 
                                            TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"/>
-                                    <Label Text="{Binding SummaryData.average_order_value, StringFormat='${0:F2}'}" 
+                                    <Label Text="{Binding SummaryData.average_order_value, StringFormat='{0:F2}'}" 
                                            FontSize="20" 
                                            FontAttributes="Bold"
                                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"/>
@@ -74,7 +74,7 @@
                                     <Label Text="Revenue" 
                                            FontSize="14" 
                                            TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"/>
-                                    <Label Text="{Binding SummaryData.total_revenue, StringFormat='${0:F2}'}" 
+                                    <Label Text="{Binding SummaryData.total_revenue, StringFormat='{0:F2}'}" 
                                            FontSize="20" 
                                            FontAttributes="Bold"
                                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"/>
@@ -106,7 +106,7 @@
                                                VerticalOptions="Center"
                                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"/>
                                         <Label Grid.Column="1" 
-                                               Text="{Binding total_sales, StringFormat='${0:N2}'}" 
+                                               Text="{Binding total_sales, StringFormat='{0:N2}'}" 
                                                VerticalOptions="Center" 
                                                FontAttributes="Bold"
                                                TextColor="{AppThemeBinding Light=#4CAF50, Dark=#81C784}"/>

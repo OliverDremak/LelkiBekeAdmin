@@ -29,6 +29,7 @@ namespace LelkiBekeAdmin.API
         public static Task<Tres?> CreateNewMenuItem<Treq, Tres>(Treq data) where Treq : class where Tres : class, new() => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/newMenuItem", data);
         public static Task<Tres?> ModifyMenuItemById<Treq, Tres>(Treq data) where Treq : class where Tres : class, new() => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/modifyMenuItem", data);
         public static Task<Tres?> DeleteMenuItemById<Treq, Tres>(Treq data) where Treq : class where Tres : class, new() => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/deleteMenuItem", data);
+        public static Task<Tres?> UpdateOpenHours<Treq, Tres>(Treq data) where Treq : class where Tres : class, new() => HTTPComPost<Treq, Tres>.Post($"{BaseUrl}/update-opening-hours", data);
     }
 }
 
